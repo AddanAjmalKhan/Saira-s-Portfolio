@@ -10,7 +10,7 @@ export default function ResearchMapSection() {
   return (
     <section
       id="journey"
-      className="grain relative scroll-mt-24 overflow-hidden bg-night py-24 text-cream sm:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-24 text-gray-900 sm:py-32"
     >
       <Aurora intensity="subtle" />
       <Container className="relative">

@@ -5,7 +5,7 @@ import { honours } from "@/data/achievements";
 
 export default function Honours() {
   return (
-    <Section id="honours" className="bg-cream">
+    <Section id="honours" className="bg-gray-50">
       <SectionHeading
         index="08"
         eyebrow="Honours & Awards"
@@ -16,21 +16,21 @@ export default function Honours() {
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {honours.map((honour, i) => (
           <Reveal key={honour.title} from="up" delay={i * 70}>
-            <div className="group relative h-full overflow-hidden rounded-3xl border border-ink/[0.08] bg-paper p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-mint/40">
+            <div className="group relative h-full overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-mint/40">
               <span
-                className="absolute -right-2 top-1 font-display text-6xl font-semibold text-mint/10 transition-colors group-hover:text-amber/20"
+                className="absolute -right-2 top-1 font-display text-6xl font-semibold text-blue-500/10 transition-colors group-hover:text-blue-600/20"
                 aria-hidden
               >
                 {honour.year}
               </span>
               <div className="relative">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber/15 text-amber-deep transition-colors group-hover:bg-mint/15 group-hover:text-mint-deep">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber/15 text-blue-700 transition-colors group-hover:bg-mint/15 group-hover:text-blue-600">
                   <TrophyMark />
                 </span>
-                <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-ink">
+                <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-gray-900">
                   {honour.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">
                   {honour.detail}
                 </p>
               </div>

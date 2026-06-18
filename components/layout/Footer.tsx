@@ -4,14 +4,14 @@ import { LinkedInIcon, ResearchGateIcon, MailIcon } from "@/components/ui/icons"
 
 export default function Footer() {
   return (
-    <footer className="border-t border-cream/10 bg-night text-cream/80">
+    <footer className="border-t border-forest-100 bg-night text-ink-soft">
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="font-display text-2xl font-semibold text-cream">
+            <p className="font-display text-2xl font-bold text-forest-900">
               {profile.name}
             </p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-cream/70">
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-soft">
               {profile.tagline}
             </p>
             <div className="mt-5 flex items-center gap-3">
@@ -20,7 +20,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/20 text-cream/80 transition-colors hover:border-mint hover:text-mint"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-forest-200 text-forest-700 transition-colors hover:border-mint hover:bg-mint hover:text-white"
               >
                 <LinkedInIcon width={18} height={18} />
               </a>
@@ -29,14 +29,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="ResearchGate"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/20 text-cream/80 transition-colors hover:border-mint hover:text-mint"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-forest-200 text-forest-700 transition-colors hover:border-mint hover:bg-mint hover:text-white"
               >
                 <ResearchGateIcon width={18} height={18} />
               </a>
               <a
                 href={`mailto:${profile.email}`}
                 aria-label="Email"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/20 text-cream/80 transition-colors hover:border-mint hover:text-mint"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-forest-200 text-forest-700 transition-colors hover:border-mint hover:bg-mint hover:text-white"
               >
                 <MailIcon width={18} height={18} />
               </a>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-soft">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint">
               Explore
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -52,7 +52,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-sm text-cream/70 transition-colors hover:text-cream"
+                    className="text-sm font-medium text-forest-700 transition-colors hover:text-mint"
                   >
                     {item.label}
                   </a>
@@ -62,15 +62,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-soft">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint">
               Contact
             </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-cream/70">
+            <ul className="mt-4 space-y-2.5 text-sm font-medium text-forest-700">
               <li>{profile.location}</li>
               <li>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="break-all transition-colors hover:text-cream"
+                  className="break-all transition-colors hover:text-mint"
                 >
                   {profile.email}
                 </a>
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-cream/10 pt-6 text-xs text-cream/50 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-forest-100 pt-6 text-xs text-ink-soft sm:flex-row font-medium">
           <p>
             © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>

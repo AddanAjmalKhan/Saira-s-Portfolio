@@ -21,14 +21,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="grain relative scroll-mt-24 overflow-hidden bg-night py-24 text-cream sm:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-24 text-gray-900 sm:py-32"
     >
       <Aurora />
       <Container className="relative">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr]">
           {/* Left — CTA */}
           <Reveal from="left">
-            <span className="inline-flex items-center gap-2 font-mono text-[0.7rem] font-semibold uppercase tracking-ultra text-mint">
+            <span className="inline-flex items-center gap-2 font-mono text-[0.7rem] font-semibold uppercase tracking-ultra text-blue-500">
               <span className="h-px w-8 bg-current opacity-50" aria-hidden />
               10 — Get in touch
             </span>
@@ -36,7 +36,7 @@ export default function Contact() {
               Let&apos;s collaborate on the{" "}
               <span className="text-gradient">science of traces.</span>
             </h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/70">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-gray-600">
               Open to research collaborations, academic partnerships and
               conversations about forensic genomics, eDNA and plant pathology.
             </p>
@@ -45,15 +45,15 @@ export default function Contact() {
               {contactRows.map((row) => {
                 const Icon = row.icon;
                 const content = (
-                  <div className="flex items-center gap-4 rounded-2xl border border-cream/10 bg-cream/[0.03] px-5 py-4 transition-colors hover:border-mint/50">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-mint/15 text-mint">
+                  <div className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-gray-50/[0.03] px-5 py-4 transition-colors hover:border-mint/50">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-mint/15 text-blue-500">
                       <Icon />
                     </span>
                     <div>
-                      <p className="font-mono text-[0.6rem] uppercase tracking-widest text-cream/50">
+                      <p className="font-mono text-[0.6rem] uppercase tracking-widest text-gray-500">
                         {row.label}
                       </p>
-                      <p className="text-sm font-medium text-cream">
+                      <p className="text-sm font-medium text-gray-900">
                         {row.value}
                       </p>
                     </div>
@@ -74,7 +74,7 @@ export default function Contact() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-sm font-medium text-cream transition-colors hover:border-mint hover:text-mint"
+                className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:border-mint hover:text-blue-500"
               >
                 <LinkedInIcon width={16} height={16} /> LinkedIn
               </a>
@@ -82,7 +82,7 @@ export default function Contact() {
                 href={profile.researchgate}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-sm font-medium text-cream transition-colors hover:border-mint hover:text-mint"
+                className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:border-mint hover:text-blue-500"
               >
                 <ResearchGateIcon width={16} height={16} /> ResearchGate
               </a>
@@ -91,7 +91,7 @@ export default function Contact() {
 
           {/* Right — references */}
           <Reveal from="right" delay={120} className="lg:pl-6">
-            <h3 className="font-display text-2xl font-semibold text-cream">
+            <h3 className="font-display text-2xl font-semibold text-gray-900">
               References
             </h3>
             <div className="mt-6 space-y-4">
@@ -100,18 +100,18 @@ export default function Contact() {
                   key={ref.email}
                   className="gradient-ring rounded-2xl p-6 [--ring-bg:#070d0a]"
                 >
-                  <p className="font-display text-lg font-semibold text-cream">
+                  <p className="font-display text-lg font-semibold text-gray-900">
                     {ref.name}
                   </p>
-                  <p className="mt-1 text-sm font-medium text-amber-soft">
+                  <p className="mt-1 text-sm font-medium text-blue-500">
                     {ref.role}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-cream/65">
+                  <p className="mt-2 text-sm leading-relaxed text-gray-900/65">
                     {ref.affiliation}
                   </p>
                   <a
                     href={`mailto:${ref.email}`}
-                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-mint transition-colors hover:text-amber-soft"
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-blue-500 transition-colors hover:text-blue-500"
                   >
                     {ref.email}
                     <ArrowIcon width={14} height={14} />

@@ -9,7 +9,7 @@ export default function Publications() {
   return (
     <section
       id="publications"
-      className="grain relative scroll-mt-24 overflow-hidden bg-night-700 py-24 text-cream sm:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-24 text-gray-900 sm:py-32"
     >
       <Aurora intensity="subtle" />
       <Container className="relative">
@@ -24,22 +24,22 @@ export default function Publications() {
         <ol className="mt-14 space-y-4">
           {publications.map((pub, index) => (
             <Reveal as="li" key={pub.title} from="up" delay={index * 70}>
-              <article className="group grid gap-4 rounded-2xl border border-cream/10 bg-cream/[0.03] p-6 transition-colors hover:border-mint/40 sm:grid-cols-[auto_1fr] sm:gap-7 sm:p-8">
+              <article className="group grid gap-4 rounded-2xl border border-gray-200 bg-gray-50/[0.03] p-6 transition-colors hover:border-mint/40 sm:grid-cols-[auto_1fr] sm:gap-7 sm:p-8">
                 <div className="flex items-start gap-3">
-                  <span className="font-mono text-sm text-cream/30">
+                  <span className="font-mono text-sm text-gray-900/30">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="inline-flex h-fit items-center rounded-full bg-mint/15 px-2.5 py-0.5 font-mono text-xs font-semibold text-mint">
+                  <span className="inline-flex h-fit items-center rounded-full bg-mint/15 px-2.5 py-0.5 font-mono text-xs font-semibold text-blue-500">
                     {pub.year}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="font-display text-xl font-semibold leading-snug text-cream transition-colors group-hover:text-mint-soft">
+                  <h3 className="font-display text-xl font-semibold leading-snug text-gray-900 transition-colors group-hover:text-blue-400">
                     {pub.title}
                   </h3>
-                  <p className="mt-2 text-sm text-cream/60">{pub.authors}</p>
-                  <p className="mt-1 text-sm italic text-amber-soft">
+                  <p className="mt-2 text-sm text-gray-500">{pub.authors}</p>
+                  <p className="mt-1 text-sm italic text-blue-500">
                     {pub.venue}
                   </p>
                   {pub.doi && (
@@ -47,7 +47,7 @@ export default function Publications() {
                       href={pub.doi}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-mint transition-colors hover:text-amber-soft"
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-blue-500 transition-colors hover:text-blue-500"
                     >
                       View DOI
                       <ArrowIcon width={14} height={14} />

@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/data/profile";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
-const inter = Inter({
+const inter = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const fraunces = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -53,7 +54,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
-      <body className="bg-night">{children}</body>
+      <body className="flex min-h-screen flex-col bg-night">
+        <Navbar />
+        <main className="flex-1 flex flex-col">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

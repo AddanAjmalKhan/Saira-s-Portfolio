@@ -9,46 +9,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm paper base
-        cream: "#f1ece1",
-        paper: "#f6f1e7",
-        ink: "#211f17",
-        "ink-soft": "#56523f",
-        // Deep muted olive — the dark "green block" surfaces (replaces near-black)
-        night: "#212a22",
-        "night-700": "#28322a",
-        "night-600": "#313d33",
-        // Muted olive-forest scale
+        // Clean white/cream base
+        cream: "#ffffff",
+        paper: "#f8fafc",
+        ink: "#0f172a",
+        "ink-soft": "#334155",
+        // The background from the screenshots is light gray/white
+        night: "#f4f6f9", // the main background color
+        "night-700": "#e2e8f0",
+        "night-600": "#cbd5e1",
+        // Navy blue scale for headings
         forest: {
-          50: "#eef1ea",
-          100: "#dce2d6",
-          200: "#bcc7b6",
-          300: "#94a591",
-          400: "#6d7f6c",
-          500: "#52634f",
-          600: "#42513f",
-          700: "#344233",
-          800: "#2a352a",
-          900: "#212a22",
+          50: "#f0f9ff",
+          100: "#e0f2fe",
+          200: "#bae6fd",
+          300: "#7dd3fc",
+          400: "#38bdf8",
+          500: "#0ea5e9",
+          600: "#0284c7",
+          700: "#0369a1",
+          800: "#075985",
+          900: "#0a1d37", // Dark navy used in headings
         },
-        // Soft warm gold (used where a lighter accent is needed)
+        // Coral Red Accents
         mint: {
-          DEFAULT: "#d29a57",
-          soft: "#e3b87f",
-          deep: "#a9712f",
+          DEFAULT: "#f9554a", // Coral Red
+          soft: "#fca5a5",
+          deep: "#dc2626",
         },
-        // Muted ochre / terracotta — primary accent
+        // Muted gold/amber — primary accent
         amber: {
-          DEFAULT: "#c5863f",
-          soft: "#d8a463",
-          deep: "#9c6224",
+          DEFAULT: "#f9554a",
+          soft: "#fca5a5",
+          deep: "#dc2626",
         },
         ochre: {
-          DEFAULT: "#c5863f",
-          soft: "#d8a463",
-          deep: "#9c6224",
+          DEFAULT: "#f9554a",
+          soft: "#fca5a5",
+          deep: "#dc2626",
         },
-        sage: "#dbe1d4",
+        sage: "#e2e8f0",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
