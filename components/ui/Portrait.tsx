@@ -22,7 +22,7 @@ export default function Portrait({
 }: PortraitProps) {
   return (
     <div className={`relative ${className}`}>
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest-600 to-forest-800 ring-1 ring-forest-900/40">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest-600 to-forest-800 ring-1 ring-slate-200">
         {src ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -31,17 +31,17 @@ export default function Portrait({
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="grain relative flex h-full w-full flex-col items-center justify-center text-cream">
+          <div className="grain relative flex h-full w-full flex-col items-center justify-center text-slate-900">
             <div className="bg-dot-grid-dark absolute inset-0 opacity-70" aria-hidden />
             <Sparkle
               size={32}
               className="absolute right-6 top-6 text-ochre-soft"
               animate
             />
-            <span className="relative font-display text-[5.5rem] font-semibold leading-none text-cream/90">
+            <span className="relative font-display text-[5.5rem] font-semibold leading-none text-slate-600">
               SA
             </span>
-            <span className="relative mt-3 font-mono text-[0.65rem] uppercase tracking-ultra text-cream/60">
+            <span className="relative mt-3 font-mono text-[0.65rem] uppercase tracking-ultra text-slate-600">
               Portrait
             </span>
           </div>
@@ -49,7 +49,7 @@ export default function Portrait({
       </div>
 
       {badge && (
-        <span className="absolute -left-3 bottom-10 rotate-[-4deg] rounded-full bg-cream px-4 py-2 font-display text-sm font-semibold text-ink shadow-lg ring-1 ring-ink/10">
+        <span className="absolute -left-3 bottom-10 rotate-[-4deg] rounded-full bg-white px-4 py-2 font-display text-sm font-semibold text-slate-900 shadow-lg ring-1 ring-slate-200">
           {badge}
         </span>
       )}

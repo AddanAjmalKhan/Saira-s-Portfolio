@@ -28,8 +28,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
   return (
     <div className={`grid gap-8 ${hideInfoPanel ? "" : "lg:grid-cols-[1.55fr_1fr] lg:items-center"}`}>
       {/* Map */}
-      <div className="relative overflow-hidden rounded-3xl border border-forest-100 bg-white/80 shadow-sm backdrop-blur-sm">
-        <div className="bg-dot-grid-dark absolute inset-0 opacity-60" aria-hidden />
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-[#eef2f7] shadow-sm">
+        <div className="bg-dot-grid absolute inset-0 opacity-60" aria-hidden />
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className="relative w-full"
@@ -41,8 +41,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
               <path
                 key={i}
                 d={d}
-                fill="#2a352a"
-                stroke="#42513f"
+                fill="#d8eef2"
+                stroke="#a5dde6"
                 strokeWidth={0.4}
               />
             ))}
@@ -70,7 +70,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                     <circle
                       r={6}
                       fill="none"
-                      stroke="#d8a463"
+                      stroke="#0891b2"
                       strokeWidth={1.5}
                       className="animate-pulse-ring"
                       style={{ transformOrigin: "center" }}
@@ -78,8 +78,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                   )}
                   <circle
                     r={isActive ? 6 : 4}
-                    fill={isActive ? "#d8a463" : "#c5863f"}
-                    stroke="#212a22"
+                    fill={isActive ? "#0891b2" : "#22d3ee"}
+                    stroke="#ffffff"
                     strokeWidth={1.4}
                     style={{ transition: "r 0.2s ease" }}
                   />
@@ -87,7 +87,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                     <text
                       y={-14}
                       textAnchor="middle"
-                      className="fill-forest-900 text-[11px] font-semibold"
+                      className="fill-slate-900 text-[11px] font-semibold"
                       style={{
                         paintOrder: "stroke",
                         stroke: "#ffffff",
@@ -104,7 +104,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
         </svg>
 
         {/* Legend */}
-        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-forest-100 bg-white/90 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-forest-900 backdrop-blur shadow-sm">
+        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-slate-200 bg-[#eef2f7]/90 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-slate-900 backdrop-blur shadow-sm">
           <span className="h-2.5 w-2.5 rounded-full bg-mint" />
           Research &amp; study sites
         </div>
@@ -114,27 +114,27 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
       {!hideInfoPanel && (
         <div className="relative min-h-[16rem]">
           {active ? (
-            <div className="bg-white/80 backdrop-blur-sm shadow-sm border border-forest-100 animate-fade-up rounded-3xl p-7 transition-all duration-300">
+            <div className="bg-white shadow-sm border border-slate-200 animate-fade-up rounded-3xl p-7 transition-all duration-300">
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-mint">
                 {active.period}
               </span>
-              <h3 className="mt-3 font-display text-3xl font-semibold text-forest-900">
+              <h3 className="mt-3 font-display text-3xl font-semibold text-slate-900">
                 {active.city},{" "}
                 <span className="text-mint">{active.country}</span>
               </h3>
-              <p className="mt-1 text-sm font-medium text-forest-700">
+              <p className="mt-1 text-sm font-medium text-mint">
                 {active.role}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-4 text-sm leading-relaxed text-slate-600">
                 {active.detail}
               </p>
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-forest-200 bg-forest-50 p-7 h-full flex flex-col justify-center">
-              <h3 className="font-display text-2xl font-semibold text-forest-900">
+            <div className="rounded-3xl border border-dashed border-slate-200 bg-mint/10 p-7 h-full flex flex-col justify-center">
+              <h3 className="font-display text-2xl font-semibold text-slate-900">
                 Hover a marker to explore
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 Each point marks a place where I have studied, researched or
                 trained — across {distinctCountries} countries and two continents.
               </p>
@@ -146,7 +146,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                       onMouseEnter={() => setActiveId(loc.id)}
                       onFocus={() => setActiveId(loc.id)}
                       onMouseLeave={() => setActiveId(null)}
-                      className="rounded-full border border-forest-200 bg-white px-3 py-1.5 text-xs font-medium text-forest-700 shadow-sm transition-colors hover:border-mint hover:bg-mint hover:text-white"
+                      className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-mint shadow-sm transition-colors hover:border-mint hover:bg-mint hover:text-white"
                     >
                       {loc.city}
                     </button>

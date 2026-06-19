@@ -33,25 +33,25 @@ export default function ResearchInterestsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-night pt-32 pb-20 sm:pt-40">
+    <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center mb-16">
-          <h1 className="font-display text-4xl font-bold tracking-tight text-forest-900 sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
             Research <span className="text-mint">Interests</span>
           </h1>
-          <p className="mt-6 text-lg text-ink-soft max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
             Focusing on the intersection of air forensics, genomics, and plant pathology to solve real-world biological challenges.
           </p>
         </div>
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {interests.map((item, index) => (
-            <div key={index} className="group relative bg-white p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-mint hover:shadow-xl rounded-md border border-forest-100">
+            <div key={index} className="group relative bg-white p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-mint hover:shadow-xl rounded-md border border-slate-200">
               <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border-2 border-mint/20 text-mint transition-colors group-hover:border-white/30 group-hover:text-white bg-transparent">
                 <IconMap name={item.icon} className="h-8 w-8" />
               </div>
-              <h3 className="mb-4 text-xl font-bold text-forest-900 group-hover:text-white transition-colors">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-ink-soft group-hover:text-white/90 transition-colors">{item.description}</p>
+              <h3 className="mb-4 text-xl font-bold text-slate-900 group-hover:text-white transition-colors">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-slate-600 group-hover:text-white/90 transition-colors">{item.description}</p>
             </div>
           ))}
         </div>

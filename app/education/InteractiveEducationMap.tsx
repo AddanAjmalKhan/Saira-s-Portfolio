@@ -55,32 +55,32 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
                 className={`group bg-white rounded-xl border p-6 transition-all duration-300 cursor-pointer ${
                   isActive 
                     ? "border-mint shadow-[0_8px_30px_rgb(0,0,0,0.08)] scale-[1.02]" 
-                    : "border-forest-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:border-mint/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                    : "border-slate-200 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:border-mint/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 }`}
                 onMouseEnter={() => setActiveId(id)}
                 onMouseLeave={() => setActiveId(null)}
                 onClick={() => setActiveId(id)}
               >
                 <div className="flex flex-col gap-3 mb-4">
-                  <div className="inline-flex items-center self-start rounded-full bg-forest-50 px-3 py-1 text-xs font-semibold text-forest-700">
+                  <div className="inline-flex items-center self-start rounded-full bg-mint/10 px-3 py-1 text-xs font-semibold text-mint">
                     {item.period}
                   </div>
-                  <h3 className={`text-xl font-bold leading-tight transition-colors ${isActive ? "text-mint" : "text-forest-900"}`}>
+                  <h3 className={`text-xl font-bold leading-tight transition-colors ${isActive ? "text-mint" : "text-slate-900"}`}>
                     {item.degree}
                   </h3>
                 </div>
                 
-                <div className="mb-4 text-sm font-medium text-forest-800 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-forest-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="mb-4 text-sm font-medium text-slate-800 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-mint flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                   <span>
                     {item.university}
-                    <span className="text-forest-500 font-normal ml-1">— {item.location}</span>
+                    <span className="text-mint font-normal ml-1">— {item.location}</span>
                   </span>
                 </div>
                 
-                <p className="text-ink-soft leading-relaxed text-sm border-t border-forest-50 pt-4">
+                <p className="text-slate-600 leading-relaxed text-sm border-t border-slate-200 pt-4">
                   {item.description}
                 </p>
               </div>
@@ -90,7 +90,7 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
       </div>
 
       {/* Sticky Map */}
-      <div className="lg:sticky lg:top-32 relative z-10 w-full rounded-3xl p-4 bg-white/50 backdrop-blur border border-forest-100 shadow-xl">
+      <div className="lg:sticky lg:top-32 relative z-10 w-full rounded-3xl p-4 bg-[#eef2f7] border border-slate-200 shadow-xl">
         <ResearchMap 
           geometry={geometry} 
           activeId={activeId} 
@@ -99,7 +99,7 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
         />
         
         <div className="mt-6 text-center pb-2">
-          <p className="text-sm font-medium text-forest-600 bg-forest-50 inline-block px-4 py-2 rounded-full">
+          <p className="text-sm font-medium text-mint bg-mint/10 inline-block px-4 py-2 rounded-full">
             Hover over a map point or a card to explore the journey.
           </p>
         </div>

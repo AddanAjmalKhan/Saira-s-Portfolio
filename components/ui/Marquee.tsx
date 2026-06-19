@@ -24,7 +24,7 @@ export default function Marquee({
           <ul key={dup} className="flex items-center" aria-hidden={dup === 1}>
             {items.map((item, i) => (
               <li key={`${dup}-${i}`} className="flex items-center">
-                <span className="px-6 font-display text-2xl font-medium text-cream/90 sm:text-3xl">
+                <span className="px-6 font-display text-2xl font-medium text-slate-600 sm:text-3xl">
                   {item}
                 </span>
                 <span className="text-mint" aria-hidden>

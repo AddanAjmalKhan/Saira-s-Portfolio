@@ -16,29 +16,29 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="grain relative overflow-hidden bg-night text-cream min-h-screen flex flex-col justify-center"
+      className="grain relative w-full overflow-hidden bg-[#f6f8fb] text-slate-900 min-h-screen lg:h-screen flex items-center pt-16"
     >
-      <div className="bg-dot-grid-dark absolute inset-0 opacity-60" aria-hidden />
+      <div className="bg-dot-grid absolute inset-0 opacity-40" aria-hidden />
       {/* Soft vignette */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_-10%,rgba(216,164,99,0.16),transparent_60%)]"
+        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_-10%,rgba(8,145,178,0.18),transparent_60%)]"
         aria-hidden
       />
 
       <Container className="relative">
-        <div className="pb-16 pt-32 sm:pt-36">
+        <div className="w-full py-10">
 
           {/* Photo + intro row */}
-          <div className="mt-10 grid items-end gap-10 lg:mt-4 lg:grid-cols-[1fr_0.85fr]">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
             
             <div className="animate-fade-up pb-2 [animation-delay:200ms] z-10 order-2 lg:order-1">
               <p className="font-mono text-xs uppercase tracking-ultra text-mint mb-2">
                 GET EVERY SINGLE SOLUTIONS.
               </p>
-              <h1 className="font-display text-5xl font-bold leading-[1.1] tracking-tight text-forest-900 sm:text-6xl md:text-[5.5rem] mt-4 mb-6">
+              <h1 className="font-display text-5xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl md:text-[5.5rem] mt-4 mb-6">
                 I'm Researcher <br/> {profile.name}
               </h1>
-              <p className="max-w-lg text-pretty text-base leading-relaxed text-ink-soft mb-8">
+              <p className="max-w-lg text-pretty text-base leading-relaxed text-slate-600 mb-8">
                 {profile.summary}
               </p>
 
@@ -51,7 +51,7 @@ export default function Hero() {
                 </Link>
                 <Link
                   href="/publications"
-                  className="inline-flex items-center gap-2 rounded-md border-2 border-forest-900/10 px-8 py-3 text-sm font-semibold text-forest-900 transition-colors hover:border-mint hover:text-mint"
+                  className="inline-flex items-center gap-2 rounded-md border-2 border-slate-200 px-8 py-3 text-sm font-semibold text-slate-900 transition-colors hover:border-mint hover:text-mint"
                 >
                   View Publications
                 </Link>
@@ -65,7 +65,7 @@ export default function Hero() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2.5 rounded-full border border-forest-900/10 bg-white px-5 py-2.5 text-sm font-medium text-forest-900 transition-all hover:border-forest-900/20 hover:shadow-md"
+                      className="group flex items-center gap-2.5 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-900 transition-all hover:border-slate-300 hover:shadow-md"
                     >
                       <span className="opacity-70 group-hover:opacity-100 transition-opacity">
                         {s.icon}
@@ -78,7 +78,7 @@ export default function Hero() {
             </div>
             
             <div className="relative animate-fade-up [animation-delay:120ms] z-10 order-1 lg:order-2 flex justify-center lg:justify-end w-full">
-              <Portrait src="/profile.jpg" alt={`Portrait of ${profile.name}`} className="w-full max-w-xs sm:max-w-md lg:max-w-lg" />
+              <Portrait src="/profile.jpg" alt={`Portrait of ${profile.name}`} className="w-full max-w-[14rem] sm:max-w-[16rem] lg:max-w-[19rem]" />
             </div>
           </div>
         </div>

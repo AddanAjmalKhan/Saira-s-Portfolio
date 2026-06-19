@@ -8,7 +8,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="relative scroll-mt-24 overflow-hidden bg-gray-50 py-24 sm:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-[#eef2f7] py-24 sm:py-28"
     >
       {/* Résumé watermark */}
       <div

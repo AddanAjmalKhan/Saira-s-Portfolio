@@ -13,7 +13,7 @@ export default function Timeline({ entries, tone = "light" }: TimelineProps) {
   return (
     <ol
       className={`relative space-y-12 border-l pl-8 sm:pl-12 ${
-        isDark ? "border-cream/20" : "border-forest-200"
+        isDark ? "border-slate-200" : "border-slate-200"
       }`}
     >
       <span
@@ -48,7 +48,7 @@ export default function Timeline({ entries, tone = "light" }: TimelineProps) {
 
           <h3
             className={`mt-2 font-display text-2xl font-semibold leading-tight ${
-              isDark ? "text-cream" : "text-ink"
+              isDark ? "text-slate-900" : "text-slate-900"
             }`}
           >
             {entry.title}
@@ -56,11 +56,11 @@ export default function Timeline({ entries, tone = "light" }: TimelineProps) {
 
           <p
             className={`mt-1 text-sm font-medium ${
-              isDark ? "text-cream/70" : "text-forest-700"
+              isDark ? "text-slate-600" : "text-mint"
             }`}
           >
             {entry.organisation}
-            <span className={isDark ? "text-cream/45" : "text-ink-soft/60"}>
+            <span className={isDark ? "text-slate-600" : "text-slate-600/60"}>
               {" "}
               · {entry.location}
             </span>
@@ -70,7 +70,7 @@ export default function Timeline({ entries, tone = "light" }: TimelineProps) {
             <p
               className={`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
                 isDark
-                  ? "bg-cream/15 text-cream"
+                  ? "bg-cream/15 text-slate-900"
                   : "bg-ochre/15 text-amber-deep"
               }`}
             >
@@ -83,7 +83,7 @@ export default function Timeline({ entries, tone = "light" }: TimelineProps) {
               <li
                 key={j}
                 className={`relative pl-5 text-sm leading-relaxed ${
-                  isDark ? "text-cream/75" : "text-ink-soft"
+                  isDark ? "text-slate-600" : "text-slate-600"
                 }`}
               >
                 <span
@@ -102,8 +102,8 @@ export default function Timeline({ entries, tone = "light" }: TimelineProps) {
                   key={tag}
                   className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
                     isDark
-                      ? "bg-ink/40 text-cream/85 ring-1 ring-inset ring-cream/10"
-                      : "bg-cream text-ink-soft ring-1 ring-inset ring-ink/10"
+                      ? "bg-ink/40 text-slate-600 ring-1 ring-inset ring-slate-200"
+                      : "bg-white text-slate-600 ring-1 ring-inset ring-slate-200"
                   }`}
                 >
                   #{tag.replace(/\s+/g, "")}

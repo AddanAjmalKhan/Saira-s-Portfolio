@@ -9,46 +9,45 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Clean white/cream base
+        // Clean light base with a faint cool tint
         cream: "#ffffff",
-        paper: "#f8fafc",
+        paper: "#ffffff",
         ink: "#0f172a",
-        "ink-soft": "#334155",
-        // The background from the screenshots is light gray/white
-        night: "#f4f6f9", // the main background color
-        "night-700": "#e2e8f0",
-        "night-600": "#cbd5e1",
-        // Navy blue scale for headings
+        "ink-soft": "#475569",
+        // Light page surfaces
+        night: "#f6f8fb",
+        "night-700": "#eef2f7",
+        "night-600": "#e2e8f0",
+        // Teal-blue scale
         forest: {
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0a1d37", // Dark navy used in headings
+          50: "#ecfeff",
+          100: "#cffafe",
+          200: "#a5f3fc",
+          300: "#67e8f9",
+          400: "#22d3ee",
+          500: "#06b6d4",
+          600: "#0891b2",
+          700: "#0e7490",
+          800: "#155e75",
+          900: "#0f172a",
         },
-        // Coral Red Accents
+        // Teal blue — primary accent
         mint: {
-          DEFAULT: "#f9554a", // Coral Red
-          soft: "#fca5a5",
-          deep: "#dc2626",
+          DEFAULT: "#0891b2",
+          soft: "#67e8f9",
+          deep: "#0e7490",
         },
-        // Muted gold/amber — primary accent
         amber: {
-          DEFAULT: "#f9554a",
-          soft: "#fca5a5",
-          deep: "#dc2626",
+          DEFAULT: "#0891b2",
+          soft: "#67e8f9",
+          deep: "#0e7490",
         },
         ochre: {
-          DEFAULT: "#f9554a",
-          soft: "#fca5a5",
-          deep: "#dc2626",
+          DEFAULT: "#0891b2",
+          soft: "#67e8f9",
+          deep: "#0e7490",
         },
-        sage: "#e2e8f0",
+        sage: "#1b2d40",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

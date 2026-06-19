@@ -45,7 +45,7 @@ export default function SectionHeading({
 
       <h2
         className={`mt-5 font-display text-[2.1rem] font-semibold leading-[1.04] tracking-tightest sm:text-5xl md:text-6xl ${
-          isDark ? "text-cream" : "text-ink"
+          isDark ? "text-slate-900" : "text-slate-900"
         }`}
       >
         {title}
@@ -54,7 +54,7 @@ export default function SectionHeading({
       {description && (
         <p
           className={`mt-6 text-base leading-relaxed sm:text-lg ${
-            isDark ? "text-cream/70" : "text-ink-soft"
+            isDark ? "text-slate-600" : "text-slate-600"
           }`}
         >
           {description}

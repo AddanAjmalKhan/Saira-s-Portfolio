@@ -6,9 +6,9 @@ interface BadgeProps {
 }
 
 const variants: Record<NonNullable<BadgeProps["variant"]>, string> = {
-  forest: "bg-forest-50 text-forest-700 ring-forest-200",
+  forest: "bg-mint/10 text-mint ring-slate-200",
   amber: "bg-amber/10 text-amber-deep ring-amber/30",
-  outline: "bg-transparent text-ink-soft ring-ink/15",
+  outline: "bg-transparent text-slate-600 ring-slate-200",
 };
 
 export default function Badge({ children, variant = "forest" }: BadgeProps) {

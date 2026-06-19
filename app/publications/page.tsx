@@ -2,22 +2,22 @@ import { publications } from "@/data/profile";
 
 export default function PublicationsPage() {
   return (
-    <main className="min-h-screen bg-night pt-32 pb-20 sm:pt-40">
+    <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <h1 className="mb-12 font-display text-4xl font-bold tracking-tight text-forest-900 sm:text-5xl">
+        <h1 className="mb-12 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
           Scientific <span className="text-mint">Publications</span>
         </h1>
         
         <div className="grid gap-6">
           {publications.map((pub, index) => (
-            <div key={index} className="group relative rounded-md border border-forest-50 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-mint/30">
+            <div key={index} className="group relative rounded-md border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-mint/30">
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-forest-900 mb-2 leading-snug group-hover:text-mint transition-colors">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2 leading-snug group-hover:text-mint transition-colors">
                     {pub.title}
                   </h3>
-                  <p className="text-ink-soft mb-3 text-sm leading-relaxed">{pub.authors}</p>
-                  <p className="text-forest-700 text-sm font-medium">
+                  <p className="text-slate-600 mb-3 text-sm leading-relaxed">{pub.authors}</p>
+                  <p className="text-mint text-sm font-medium">
                     <span className="italic">{pub.journal}</span>
                     {pub.volume && `, Vol: ${pub.volume}`}
                     {pub.issue && `, Issue: ${pub.issue}`}

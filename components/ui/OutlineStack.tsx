@@ -20,7 +20,7 @@ export default function OutlineStack({
   className = "",
   overlap = 0.18,
 }: OutlineStackProps) {
-  const solid = tone === "ochre" ? "text-gradient" : "text-cream";
+  const solid = tone === "ochre" ? "text-gradient" : "text-slate-900";
   const stroke = tone === "ochre" ? "text-stroke-ochre" : "text-stroke";
 
   return (

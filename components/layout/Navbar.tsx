@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="pointer-events-auto mx-auto flex max-w-container items-center justify-between gap-4 bg-white px-6 py-4">
         <Link
           href="/"
-          className="group flex flex-shrink-0 items-center gap-3 font-display text-xl font-bold tracking-tight text-forest-900"
+          className="group flex flex-shrink-0 items-center gap-3 font-display text-xl font-bold tracking-tight text-slate-900"
         >
           <div className="relative h-8 w-8">
              {/* Simple red book/portfolio icon similar to the image */}
@@ -34,7 +34,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`relative whitespace-nowrap text-sm font-bold transition-colors hover:text-mint ${
-                  isActive ? "text-mint" : "text-forest-900"
+                  isActive ? "text-mint" : "text-slate-900"
                 }`}
               >
                 {item.label}
@@ -42,18 +42,18 @@ export default function Navbar() {
             );
           })}
           <div className="group relative py-2">
-            <span className="cursor-pointer text-sm font-bold text-forest-900 transition-colors hover:text-mint">
+            <span className="cursor-pointer text-sm font-bold text-slate-900 transition-colors hover:text-mint">
               More ▾
             </span>
-            <div className="pointer-events-none absolute left-1/2 top-full mt-2 flex w-48 -translate-x-1/2 flex-col gap-1 rounded-xl border border-forest-100 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:pointer-events-auto group-hover:opacity-100">
+            <div className="pointer-events-none absolute left-1/2 top-full mt-2 flex w-48 -translate-x-1/2 flex-col gap-1 rounded-xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:pointer-events-auto group-hover:opacity-100">
               {navItems.slice(5).map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`whitespace-nowrap rounded-lg px-4 py-2 text-sm font-semibold transition-colors hover:bg-forest-50 hover:text-mint ${
-                      isActive ? "text-mint bg-forest-50" : "text-forest-900"
+                    className={`whitespace-nowrap rounded-lg px-4 py-2 text-sm font-semibold transition-colors hover:bg-mint/10 hover:text-mint ${
+                      isActive ? "text-mint bg-mint/10" : "text-slate-900"
                     }`}
                   >
                     {item.label}
@@ -68,7 +68,7 @@ export default function Navbar() {
           href="/contact"
           className="hidden rounded-sm bg-mint px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-mint/90 md:inline-block shadow-sm"
         >
-          Get Free Consultant
+          Contact us
         </a>
 
         {/* Mobile toggle */}
@@ -84,15 +84,15 @@ export default function Navbar() {
         </label>
 
         {/* Mobile panel */}
-        <div className="absolute inset-x-0 top-16 hidden flex-col gap-1 rounded-b-3xl border border-forest-100 bg-white p-6 shadow-2xl peer-checked:flex md:hidden">
+        <div className="absolute inset-x-0 top-16 hidden flex-col gap-1 rounded-b-3xl border border-slate-200 bg-white p-6 shadow-2xl peer-checked:flex md:hidden">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors hover:bg-forest-50 hover:text-mint ${
-                  isActive ? "text-mint bg-forest-50" : "text-forest-900"
+                className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors hover:bg-mint/10 hover:text-mint ${
+                  isActive ? "text-mint bg-mint/10" : "text-slate-900"
                 }`}
               >
                 {item.label}
@@ -103,7 +103,7 @@ export default function Navbar() {
             href="/contact"
             className="mt-4 rounded-md bg-mint px-4 py-3 text-center text-sm font-bold text-white shadow-sm"
           >
-            Get Free Consultant
+            Contact us
           </a>
         </div>
       </div>

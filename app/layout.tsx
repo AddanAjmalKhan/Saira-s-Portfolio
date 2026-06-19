@@ -54,7 +54,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-night">
+      <body className="flex min-h-screen flex-col bg-[#f6f8fb]">
         <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
