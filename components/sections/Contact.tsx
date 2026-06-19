@@ -76,7 +76,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/5 px-4 py-2 text-sm font-medium text-slate-900 transition duration-300 ease-out hover:border-mint hover:bg-mint/10 hover:text-mint hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
               >
-                <LinkedInIcon width={16} height={16} /> LinkedIn
+                <LinkedInIcon width={16} height={16} style={{ color: "#0A66C2" }} /> LinkedIn
               </a>
               <a
                 href={profile.researchgate}
@@ -84,7 +84,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/5 px-4 py-2 text-sm font-medium text-slate-900 transition duration-300 ease-out hover:border-mint hover:bg-mint/10 hover:text-mint hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
               >
-                <ResearchGateIcon width={16} height={16} /> ResearchGate
+                <ResearchGateIcon width={16} height={16} style={{ color: "#00CCBB" }} /> ResearchGate
               </a>
             </div>
           </Reveal>

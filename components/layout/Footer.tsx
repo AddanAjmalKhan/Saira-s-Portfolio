@@ -22,7 +22,7 @@ export default function Footer() {
                   aria-label="LinkedIn"
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:border-mint hover:bg-mint/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
                 >
-                  <LinkedInIcon width={18} height={18} />
+                  <LinkedInIcon width={18} height={18} style={{ color: "#0A66C2" }} />
                 </a>
                 <a
                   href={profile.researchgate}
@@ -31,7 +31,7 @@ export default function Footer() {
                   aria-label="ResearchGate"
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:border-mint hover:bg-mint/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
                 >
-                  <ResearchGateIcon width={18} height={18} />
+                  <ResearchGateIcon width={18} height={18} style={{ color: "#00CCBB" }} />
                 </a>
                 <a
                   href={`mailto:${profile.email}`}
@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
 
             <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white">
               Explore
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white">
               Contact
             </p>
             <ul className="mt-4 space-y-2.5 text-sm font-medium text-slate-400">

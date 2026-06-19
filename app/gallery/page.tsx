@@ -12,7 +12,7 @@ export default function GalleryPage() {
     <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h1 className="mb-4 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl text-center">
-          Academic <span className="text-mint">Gallery</span>
+          Academic Gallery
         </h1>
         <p className="text-center text-slate-600 mb-16 max-w-2xl mx-auto">
           A visual journey through my international research, laboratory work, conferences, and field experiences.

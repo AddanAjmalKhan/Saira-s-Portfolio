@@ -28,7 +28,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
   return (
     <div className={`grid gap-8 ${hideInfoPanel ? "" : "lg:grid-cols-[1.55fr_1fr] lg:items-center"}`}>
       {/* Map */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-[#eef2f7] shadow-sm">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
         <div className="bg-dot-grid absolute inset-0 opacity-60" aria-hidden />
         <svg
           viewBox={`0 0 ${width} ${height}`}
@@ -41,8 +41,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
               <path
                 key={i}
                 d={d}
-                fill="#d8eef2"
-                stroke="#a5dde6"
+                fill="#e2e8f0"
+                stroke="#cbd5e1"
                 strokeWidth={0.4}
               />
             ))}
@@ -70,7 +70,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                     <circle
                       r={6}
                       fill="none"
-                      stroke="#0891b2"
+                      stroke="#475569"
                       strokeWidth={1.5}
                       className="animate-pulse-ring"
                       style={{ transformOrigin: "center" }}
@@ -104,8 +104,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
         </svg>
 
         {/* Legend */}
-        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-slate-200 bg-[#eef2f7]/90 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-slate-900 backdrop-blur shadow-sm">
-          <span className="h-2.5 w-2.5 rounded-full bg-mint" />
+        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50/90 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-slate-900 backdrop-blur shadow-sm">
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-400" />
           Research &amp; study sites
         </div>
       </div>

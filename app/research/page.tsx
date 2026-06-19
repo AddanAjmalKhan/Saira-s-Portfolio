@@ -37,7 +37,7 @@ export default function ResearchInterestsPage() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-            Research <span className="text-mint">Interests</span>
+            Research Interests
           </h1>
           <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
             Focusing on the intersection of air forensics, genomics, and plant pathology to solve real-world biological challenges.
@@ -45,15 +45,18 @@ export default function ResearchInterestsPage() {
         </div>
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {interests.map((item, index) => (
-            <div key={index} className="group relative bg-white p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-mint hover:shadow-xl rounded-md border border-slate-200">
-              <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border-2 border-mint/20 text-mint transition-colors group-hover:border-white/30 group-hover:text-white bg-transparent">
-                <IconMap name={item.icon} className="h-8 w-8" />
+          {interests.map((item, index) => {
+            const isThirdCard = index === 2;
+            return (
+              <div key={index} className={`group relative p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl rounded-md border ${isThirdCard ? 'bg-mint hover:bg-white border-mint' : 'bg-white hover:bg-mint border-slate-200'}`}>
+                <div className={`mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border-2 transition-colors bg-transparent ${isThirdCard ? 'border-white/30 text-white group-hover:border-mint/20 group-hover:text-mint' : 'border-mint/20 text-mint group-hover:border-white/30 group-hover:text-white'}`}>
+                  <IconMap name={item.icon} className="h-8 w-8" />
+                </div>
+                <h3 className={`mb-4 text-xl font-bold transition-colors ${isThirdCard ? 'text-white group-hover:text-slate-900' : 'text-slate-900 group-hover:text-white'}`}>{item.title}</h3>
+                <p className={`text-sm leading-relaxed transition-colors ${isThirdCard ? 'text-white/90 group-hover:text-slate-600' : 'text-slate-600 group-hover:text-white/90'}`}>{item.description}</p>
               </div>
-              <h3 className="mb-4 text-xl font-bold text-slate-900 group-hover:text-white transition-colors">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-slate-600 group-hover:text-white/90 transition-colors">{item.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </main>

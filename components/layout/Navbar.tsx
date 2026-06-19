@@ -3,12 +3,31 @@
 import { navItems, profile } from "@/data/profile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
 
 /**
  * Floating glass navbar. Pure CSS mobile menu (peer checkbox) — no client JS.
  */
 export default function Navbar() {
   const pathname = usePathname();
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setMoreOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setMoreOpen(false);
+  }, [pathname]);
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 sm:top-0 w-full bg-white shadow-sm">
@@ -41,26 +60,47 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <div className="group relative py-2">
-            <span className="cursor-pointer text-sm font-bold text-slate-900 transition-colors hover:text-mint">
-              More ▾
-            </span>
-            <div className="pointer-events-none absolute left-1/2 top-full mt-2 flex w-48 -translate-x-1/2 flex-col gap-1 rounded-xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:pointer-events-auto group-hover:opacity-100">
-              {navItems.slice(5).map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`whitespace-nowrap rounded-lg px-4 py-2 text-sm font-semibold transition-colors hover:bg-mint/10 hover:text-mint ${
-                      isActive ? "text-mint bg-mint/10" : "text-slate-900"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
+
+          {/* More dropdown — click-toggled */}
+          <div className="relative py-2" ref={moreRef}>
+            <button
+              onClick={() => setMoreOpen((o) => !o)}
+              className="flex cursor-pointer items-center gap-1 text-sm font-bold text-slate-900 transition-colors hover:text-mint focus:outline-none"
+            >
+              More
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {moreOpen && (
+              <div className="absolute left-1/2 top-full mt-2 flex w-48 -translate-x-1/2 flex-col gap-1 rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
+                {navItems.slice(5).map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`whitespace-nowrap rounded-lg px-4 py-2 text-sm font-semibold transition-colors hover:bg-mint/10 hover:text-mint ${
+                        isActive ? "text-mint bg-mint/10" : "text-slate-900"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </nav>
 
@@ -110,3 +150,4 @@ export default function Navbar() {
     </header>
   );
 }
+

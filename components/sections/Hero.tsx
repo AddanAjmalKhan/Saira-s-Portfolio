@@ -7,9 +7,9 @@ import { ArrowIcon, LinkedInIcon, ResearchGateIcon, MailIcon } from "@/component
 import Link from "next/link";
 
 const socials = [
-  { label: "LinkedIn", icon: <LinkedInIcon className="w-4 h-4" />, href: profile.linkedin },
-  { label: "ResearchGate", icon: <ResearchGateIcon className="w-4 h-4" />, href: profile.researchgate },
-  { label: "Email", icon: <MailIcon className="w-4 h-4" />, href: `mailto:${profile.email}` },
+  { label: "LinkedIn", icon: <LinkedInIcon className="w-4 h-4" style={{ color: "#0A66C2" }} />, href: profile.linkedin },
+  { label: "ResearchGate", icon: <ResearchGateIcon className="w-4 h-4" style={{ color: "#00CCBB" }} />, href: profile.researchgate },
+  { label: "Email", icon: <MailIcon className="w-4 h-4" style={{ color: "#475569" }} />, href: `mailto:${profile.email}` },
 ];
 
 export default function Hero() {

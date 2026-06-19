@@ -18,7 +18,7 @@ export default function CollaborationsPage() {
     <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <h1 className="mb-6 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Research <span className="text-mint">Collaborations</span>
+          Research Collaborations
         </h1>
         <p className="mb-16 text-lg text-slate-600 max-w-3xl">
           I actively collaborate with universities, research institutes, and international organizations to advance science in air forensics, plant pathology, and genomic surveillance.
@@ -41,15 +41,15 @@ export default function CollaborationsPage() {
             </div>
           </div>
           
-          <div className="rounded-md border border-mint/20 bg-white p-8 flex flex-col items-center justify-center text-center shadow-sm">
+          <div className="rounded-2xl bg-slate-950 p-8 flex flex-col items-center justify-center text-center shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-mint mb-6"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-            <h2 className="mb-4 text-2xl font-bold text-slate-900">Open for Collaboration</h2>
-            <p className="mb-8 text-slate-600">
-              Interested in partnering on projects related to eDNA, plant pathology, bioinformatics, or biosecurity? Let's explore how we can work together.
+            <h2 className="mb-4 text-2xl font-bold text-white">Open for Collaboration</h2>
+            <p className="mb-8 text-slate-400">
+              Interested in partnering on projects related to eDNA, plant pathology, bioinformatics, or biosecurity? Let&apos;s explore how we can work together.
             </p>
             <Link 
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-mint px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-full bg-mint px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               Contact for Collaboration
             </Link>
