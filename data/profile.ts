@@ -60,7 +60,7 @@ export const education = [
     degree: "Bachelor of Education",
     university: "Allama Iqbal Open University, Islamabad, Pakistan",
     period: "01/10/2019 – 21/01/2022",
-    description: "Major Subjects: Research Methods, Educational Statistics, Human Development, Curriculum Development.",
+    description: "Major Subjects: Research Methods, Educational Statistics, Human Development, Curriculum Development",
     location: "Pakistan"
   }
 ];

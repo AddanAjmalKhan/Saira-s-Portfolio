@@ -3,13 +3,13 @@ import OutlineStack from "@/components/ui/OutlineStack";
 import Sparkle from "@/components/ui/Sparkle";
 import Portrait from "@/components/ui/Portrait";
 import { profile } from "@/data/profile";
-import { ArrowIcon } from "@/components/ui/icons";
+import { ArrowIcon, LinkedInIcon, ResearchGateIcon, MailIcon } from "@/components/ui/icons";
 import Link from "next/link";
 
 const socials = [
-  { label: "LinkedIn", short: "IN", href: profile.linkedin },
-  { label: "ResearchGate", short: "RG", href: profile.researchgate },
-  { label: "Email", short: "@", href: `mailto:${profile.email}` },
+  { label: "LinkedIn", icon: <LinkedInIcon className="w-4 h-4" />, href: profile.linkedin },
+  { label: "ResearchGate", icon: <ResearchGateIcon className="w-4 h-4" />, href: profile.researchgate },
+  { label: "Email", icon: <MailIcon className="w-4 h-4" />, href: `mailto:${profile.email}` },
 ];
 
 export default function Hero() {
@@ -65,10 +65,10 @@ export default function Hero() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 rounded-full border border-forest-900/10 bg-white px-5 py-2.5 text-sm font-medium text-forest-900 transition-all hover:border-mint hover:bg-mint hover:text-white"
+                      className="group flex items-center gap-2.5 rounded-full border border-forest-900/10 bg-white px-5 py-2.5 text-sm font-medium text-forest-900 transition-all hover:border-forest-900/20 hover:shadow-md"
                     >
-                      <span className="font-mono text-xs font-bold opacity-70">
-                        {s.short}
+                      <span className="opacity-70 group-hover:opacity-100 transition-opacity">
+                        {s.icon}
                       </span>
                       {s.label}
                     </a>
