@@ -84,18 +84,26 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                     style={{ transition: "r 0.2s ease" }}
                   />
                   {isActive && (
-                    <text
-                      y={-14}
-                      textAnchor="middle"
-                      className="fill-slate-900 text-[11px] font-semibold"
-                      style={{
-                        paintOrder: "stroke",
-                        stroke: "#ffffff",
-                        strokeWidth: 3,
-                      }}
-                    >
-                      {loc.city}
-                    </text>
+                    <g transform="translate(0, -20)">
+                      <rect
+                        x={-(((loc.university || loc.city).length * 6.5) / 2 + 6)}
+                        y="-16"
+                        width={(loc.university || loc.city).length * 6.5 + 12}
+                        height="22"
+                        rx="4"
+                        fill="#ffffff"
+                        stroke="#e2e8f0"
+                        strokeWidth="1"
+                        className="shadow-sm"
+                      />
+                      <text
+                        y="-2"
+                        textAnchor="middle"
+                        className="fill-slate-900 text-[10px] font-semibold"
+                      >
+                        {loc.university || loc.city}
+                      </text>
+                    </g>
                   )}
                 </g>
               );

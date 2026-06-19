@@ -80,4 +80,5 @@ export interface MapLocation {
   role: string;
   detail: string;
   period: string;
+  university?: string;
 }

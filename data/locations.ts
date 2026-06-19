@@ -10,6 +10,7 @@ export const mapLocations: MapLocation[] = [
     role: "PhD — Air Forensics",
     detail: "Marie Skłodowska-Curie Fellow, National University of San Juan.",
     period: "2026 — Present",
+    university: "National University of San Juan",
   },
   {
     id: "viterbo",
@@ -19,6 +20,7 @@ export const mapLocations: MapLocation[] = [
     role: "MSc & Genomics Research",
     detail: "Diaporthe amygdali genome assembly at the University of Tuscia.",
     period: "2023 — 2025",
+    university: "University of Tuscia",
   },
   {
     id: "pieve-tesino",
@@ -28,6 +30,7 @@ export const mapLocations: MapLocation[] = [
     role: "Summer School",
     detail: "Plant Health in the Wake of AI (SLU / UNITUS / ELLS).",
     period: "2024",
+    university: "SLU / UNITUS / ELLS",
   },
   {
     id: "godollo",
@@ -37,6 +40,7 @@ export const mapLocations: MapLocation[] = [
     role: "Erasmus+ Exchange",
     detail: "Genetics & plant stress biology at MATE University.",
     period: "2024 — 2025",
+    university: "MATE University",
   },
   {
     id: "murska-sobota",
@@ -46,6 +50,7 @@ export const mapLocations: MapLocation[] = [
     role: "Summer School",
     detail: "Climate-Friendly Agricultural Practices, Slovenian Forestry Institute.",
     period: "2024",
+    university: "Slovenian Forestry Institute",
   },
   {
     id: "graz",
@@ -55,6 +60,7 @@ export const mapLocations: MapLocation[] = [
     role: "Advanced Training",
     detail: "Microbiome & Molecular Biology Laboratory courses, University of Graz.",
     period: "2025",
+    university: "University of Graz",
   },
   {
     id: "sialkot",
@@ -64,6 +70,7 @@ export const mapLocations: MapLocation[] = [
     role: "Bachelor of Science in Zoology",
     detail: "Government College Women University Sialkot. Identified helminth parasites from livestock fecal samples.",
     period: "2015 — 2019",
+    university: "Government College Women Univ. Sialkot",
   },
   {
     id: "islamabad",
@@ -73,6 +80,7 @@ export const mapLocations: MapLocation[] = [
     role: "Bachelor of Education",
     detail: "Allama Iqbal Open University. Major Subjects: Research Methods, Educational Statistics, Human Development.",
     period: "2019 — 2022",
+    university: "Allama Iqbal Open University",
   },
   {
     id: "haripur",
@@ -82,5 +90,6 @@ export const mapLocations: MapLocation[] = [
     role: "Forestry Internship",
     detail: "Forest pest detection under the 10-Billion Trees Afforestation Project.",
     period: "2019",
+    university: "10-Billion Trees Afforestation Project",
   },
 ];
