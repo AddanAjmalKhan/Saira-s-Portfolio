@@ -22,17 +22,16 @@ export default function Portrait({
 }: PortraitProps) {
   return (
     <div className={`relative ${className}`}>
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest-600 to-forest-800 ring-1 ring-slate-200">
+      <div className="relative aspect-[4/5] overflow-visible bg-transparent">
         {src ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={src}
             alt={alt}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain bg-transparent"
           />
         ) : (
-          <div className="grain relative flex h-full w-full flex-col items-center justify-center text-slate-900">
-            <div className="bg-dot-grid-dark absolute inset-0 opacity-70" aria-hidden />
+          <div className="relative flex h-full w-full flex-col items-center justify-center text-slate-900">
             <Sparkle
               size={32}
               className="absolute right-6 top-6 text-ochre-soft"

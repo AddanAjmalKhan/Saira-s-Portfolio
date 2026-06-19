@@ -31,7 +31,7 @@ export default function PublicationsPage() {
                       href={`https://doi.org/${pub.doi}`} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border-2 border-mint/20 px-4 py-2 text-sm font-semibold text-mint transition-colors hover:bg-mint hover:text-white hover:border-mint"
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-mint/20 bg-white px-4 py-2 text-sm font-semibold text-mint shadow-sm transition duration-300 ease-out hover:-translate-y-0.5 hover:border-mint hover:bg-mint hover:text-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
                     >
                       DOI Link
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>

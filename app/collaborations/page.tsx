@@ -49,7 +49,7 @@ export default function CollaborationsPage() {
             </p>
             <Link 
               href="/contact"
-              className="rounded-md bg-mint px-8 py-3 font-semibold text-white transition-transform hover:-translate-y-1 hover:shadow-lg hover:bg-mint/90"
+              className="inline-flex items-center justify-center rounded-full bg-mint px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Contact for Collaboration
             </Link>

@@ -58,7 +58,7 @@ export default function About() {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-7 inline-flex w-full max-w-md items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 shadow-sm transition-colors hover:border-ochre"
+              className="group mt-7 inline-flex w-full max-w-md items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 shadow-sm transition duration-300 ease-out hover:border-ochre hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ochre/30"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ochre text-slate-900">
                 <ArrowIcon width={16} height={16} className="-rotate-45" />

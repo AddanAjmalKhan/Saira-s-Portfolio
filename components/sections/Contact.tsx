@@ -74,7 +74,7 @@ export default function Contact() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-mint hover:text-mint"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/5 px-4 py-2 text-sm font-medium text-slate-900 transition duration-300 ease-out hover:border-mint hover:bg-mint/10 hover:text-mint hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
               >
                 <LinkedInIcon width={16} height={16} /> LinkedIn
               </a>
@@ -82,7 +82,7 @@ export default function Contact() {
                 href={profile.researchgate}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-mint hover:text-mint"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/5 px-4 py-2 text-sm font-medium text-slate-900 transition duration-300 ease-out hover:border-mint hover:bg-mint/10 hover:text-mint hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
               >
                 <ResearchGateIcon width={16} height={16} /> ResearchGate
               </a>

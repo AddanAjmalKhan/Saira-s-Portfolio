@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import ResearchMap from "@/components/map/ResearchMap";
 import Reveal from "@/components/ui/Reveal";
 import type { WorldMapGeometry } from "@/lib/worldMap";
@@ -12,7 +12,6 @@ interface InteractiveEducationMapProps {
 
 export default function InteractiveEducationMap({ education, geometry }: InteractiveEducationMapProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // Map the location strings to the map IDs we defined in data/locations.ts
   const locationToIdMap: Record<string, string> = {
@@ -28,33 +27,34 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
     return locationToIdMap[item.location] || null;
   };
 
-  // Scroll card into view when activeId changes (e.g., from hovering the map)
-  useEffect(() => {
-    if (activeId && cardRefs.current[activeId]) {
-      cardRefs.current[activeId]?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [activeId]);
+  const educationWithIds = education.map((item) => ({
+    item,
+    id: getMapId(item),
+  }));
+
+  const sortedEducation = activeId
+    ? [
+        ...educationWithIds.filter((entry) => entry.id === activeId),
+        ...educationWithIds.filter((entry) => entry.id !== activeId),
+      ]
+    : educationWithIds;
 
   return (
     <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] items-start mt-8">
       {/* Scrollable Education List */}
-      <div className="space-y-6 lg:max-h-[75vh] lg:overflow-y-auto scrollbar-slim pr-2 sm:pr-4 pb-12">
-        {education.map((item, index) => {
-          const id = getMapId(item);
+      <div
+        className="space-y-6 lg:max-h-[75vh] lg:overflow-y-auto scrollbar-slim pr-2 sm:pr-4 pb-12 lg:scroll-smooth lg:snap-y lg:snap-mandatory"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+      >
+        {sortedEducation.map(({ item, id }, index) => {
           const isActive = activeId === id && id !== null;
           
           return (
-            <Reveal key={index} delay={index * 100} from="up" as="div">
+            <Reveal key={`${id ?? index}-${index}`} delay={index * 100} from="up" as="div">
               <div 
-                ref={(el) => {
-                  if (id) cardRefs.current[id] = el;
-                }}
                 className={`group bg-white rounded-xl border p-6 transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? "border-mint shadow-[0_8px_30px_rgb(0,0,0,0.08)] scale-[1.02]" 
+                    ? "border-mint shadow-[0_12px_50px_rgba(8,145,178,0.18)] scale-[1.02] bg-mint/5"
                     : "border-slate-200 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:border-mint/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 }`}
                 onMouseEnter={() => setActiveId(id)}

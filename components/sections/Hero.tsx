@@ -32,11 +32,8 @@ export default function Hero() {
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
             
             <div className="animate-fade-up pb-2 [animation-delay:200ms] z-10 order-2 lg:order-1">
-              <p className="font-mono text-xs uppercase tracking-ultra text-mint mb-2">
-                GET EVERY SINGLE SOLUTIONS.
-              </p>
               <h1 className="font-display text-5xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl md:text-[5.5rem] mt-4 mb-6">
-                I'm Researcher <br/> {profile.name}
+                Hi, I am Saira Adnan
               </h1>
               <p className="max-w-lg text-pretty text-base leading-relaxed text-slate-600 mb-8">
                 {profile.summary}
@@ -45,13 +42,13 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 rounded-md bg-mint px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-mint/90 hover:shadow-lg"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-mint px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Contact Me Now
                 </Link>
                 <Link
                   href="/publications"
-                  className="inline-flex items-center gap-2 rounded-md border-2 border-slate-200 px-8 py-3 text-sm font-semibold text-slate-900 transition-colors hover:border-mint hover:text-mint"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-900 transition duration-300 ease-out hover:border-mint hover:bg-mint/10 hover:text-mint hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
                 >
                   View Publications
                 </Link>
@@ -78,7 +75,7 @@ export default function Hero() {
             </div>
             
             <div className="relative animate-fade-up [animation-delay:120ms] z-10 order-1 lg:order-2 flex justify-center lg:justify-end w-full">
-              <Portrait src="/profile.jpg" alt={`Portrait of ${profile.name}`} className="w-full max-w-[14rem] sm:max-w-[16rem] lg:max-w-[19rem]" />
+              <Portrait src="/profile.jpg" alt={`Portrait of ${profile.name}`} className="w-full max-w-[18rem] sm:max-w-[24rem] lg:max-w-[40rem]" />
             </div>
           </div>
         </div>

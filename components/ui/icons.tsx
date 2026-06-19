@@ -14,13 +14,21 @@ const base = {
 };
 
 export function MailIcon(props: IconProps) {
-  const { stroke, strokeWidth, fill, ...rest } = props;
+  const { width, height, ...rest } = props;
   return (
-    <svg viewBox="0 0 24 24" width={props.width ?? 20} height={props.height ?? 20} {...rest} fill="none">
-      <path d="M12 16.64L24 7.636v13.364c0 .904-.732 1.636-1.636 1.636h-3.819V11.73z" fill="#4285f4"/>
-      <path d="M12 16.64L0 7.636v13.364c0 .904.732 1.636 1.636 1.636h3.819V11.73z" fill="#34a853"/>
-      <path d="M12 9.548L5.455 4.64 3.927 3.493C2.309 2.28 0 3.434 0 5.457v2.179z" fill="#fbbc04"/>
-      <path d="M12 9.548l6.545-4.909 1.528-1.146c1.618-1.214 3.927-.059 3.927 1.964v2.179z" fill="#ea4335"/>
+    <svg
+      viewBox="0 0 24 24"
+      width={width ?? 20}
+      height={height ?? 20}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...rest}
+    >
+      <rect x="3" y="6" width="18" height="12" rx="2" />
+      <path d="M3 6l9 7 9-7" />
     </svg>
   );
 }

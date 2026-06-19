@@ -66,7 +66,7 @@ export default function Navbar() {
 
         <a
           href="/contact"
-          className="hidden rounded-sm bg-mint px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-mint/90 md:inline-block shadow-sm"
+          className="hidden md:inline-flex items-center justify-center rounded-full bg-mint px-6 py-3 text-sm font-bold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
         >
           Contact us
         </a>
@@ -101,7 +101,7 @@ export default function Navbar() {
           })}
           <a
             href="/contact"
-            className="mt-4 rounded-md bg-mint px-4 py-3 text-center text-sm font-bold text-white shadow-sm"
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-mint px-5 py-3 text-sm font-bold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
           >
             Contact us
           </a>

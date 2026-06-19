@@ -78,7 +78,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                   )}
                   <circle
                     r={isActive ? 6 : 4}
-                    fill={isActive ? "#0891b2" : "#22d3ee"}
+                    fill="#000000"
                     stroke="#ffffff"
                     strokeWidth={1.4}
                     style={{ transition: "r 0.2s ease" }}
