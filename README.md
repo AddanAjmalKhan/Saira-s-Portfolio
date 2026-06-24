@@ -1,72 +1,156 @@
-# Saira Adnan — Portfolio
+# Saira Adnan — Portfolio + Admin Dashboard
 
-A premium, modern portfolio website for **Saira Adnan**, PhD researcher in Air Forensics.
-Built with **Next.js 14 (App Router)**, **TypeScript** and **Tailwind CSS**.
+This repository contains **two applications** that share **one database**:
 
-## Highlights
+```
+Portfolio_Saira/
+├── Frontend/             # The public portfolio website (Next.js 16)
+└── portfolio-dashboard/  # The admin dashboard / CMS (Next.js 16)
+```
 
-- **Server-first** — every section is a React Server Component. Only the interactive
-  research map is a Client Component (`"use client"`); even the mobile nav menu is
-  pure CSS (no JS).
-- **Content-driven** — all CV content lives in typed modules under `data/`, fully
-  separated from presentation.
-- **Interactive research map** — hover (or focus) markers to reveal where Saira has
-  studied, researched and trained across two continents.
-- **Refined design system** — botanical forest-green + warm amber palette, Fraunces
-  display serif + Inter body, consistent spacing and motion.
+- The **Frontend** is the public site. Every page reads its content live from the
+  database, so anything edited in the dashboard appears immediately.
+- The **portfolio-dashboard** is a password-protected admin panel where authorized
+  users log in and edit *everything* — name, phone, email, education, publications,
+  news, gallery, etc. — with create / edit / delete / reorder for each section.
 
-## Getting started
+Both apps talk to the same **Neon Postgres** database via **Prisma**. Images are
+uploaded to **Cloudinary**.
+
+---
+
+## 1. Requirements
+
+- Node.js 18+ and npm
+- A **Neon** Postgres database (free): https://neon.tech
+- A **Cloudinary** account for image uploads (free): https://cloudinary.com
+
+---
+
+## 2. Environment variables
+
+Each app has its own `.env` (copy from the provided `.env.example`). **Never commit `.env`.**
+
+### `Frontend/.env`
+```
+DATABASE_URL="postgresql://...@...neon.tech/neondb?sslmode=require"
+```
+
+### `portfolio-dashboard/.env`
+```
+DATABASE_URL="postgresql://...@...neon.tech/neondb?sslmode=require"   # SAME as Frontend
+JWT_SECRET="a-long-random-string"                                     # openssl rand -base64 32
+CLOUDINARY_CLOUD_NAME="..."
+CLOUDINARY_API_KEY="..."
+CLOUDINARY_API_SECRET="..."
+SEED_ADMIN_EMAIL="addenajmalkhanpk@gmail.com"
+SEED_ADMIN_PASSWORD="your-strong-password"
+SEED_ADMIN_NAME="Adden Ajmal Khan"
+```
+
+> The `DATABASE_URL` **must be identical** in both apps — that's how the public
+> site shows what you edit in the dashboard.
+
+---
+
+## 3. First-time setup
 
 ```bash
+# Dashboard — owns the database schema + migrations
+cd portfolio-dashboard
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run start    # serve the production build
+npx prisma migrate dev --name init   # create the database tables
+npm run db:seed                       # load all content + create your admin user
+
+# Frontend — read-only client
+cd ../Frontend
+npm install                           # postinstall runs `prisma generate`
 ```
 
-## Project structure
+`db:seed` is safe to re-run: it only inserts content when the database is empty,
+and always makes sure your admin account exists.
 
-```
-app/                     # Next.js App Router
-  layout.tsx             # Root layout, fonts, metadata
-  page.tsx               # Page composition (section order)
-  globals.css            # Tailwind layers + utilities
+---
 
-components/
-  layout/                # Navbar, Footer
-  sections/              # One component per page section
-  ui/                    # Reusable primitives (Container, Section,
-                         #   SectionHeading, Card, Badge, Timeline, icons)
-  map/
-    ResearchMap.tsx      # Interactive client-side map
+## 4. Running locally
 
-data/                    # All site content as typed modules
-  profile.ts             # Identity, nav, references, quick facts
-  education.ts           # Education timeline
-  experience.ts          # Work / research timeline
-  skills.ts              # Scientific, technical, languages, trainings
-  publications.ts        # Peer-reviewed publications
-  achievements.ts        # Honours, summer schools, conferences, memberships
-  locations.ts           # Geo-coordinates for the research map
+Open two terminals:
 
-lib/
-  types.ts               # Shared TypeScript interfaces
+```bash
+# Terminal 1 — public site  ->  http://localhost:3000
+cd Frontend
+npm run dev
 
-public/
-  world-110m.json        # World topology used by the research map
+# Terminal 2 — dashboard    ->  http://localhost:3001
+cd portfolio-dashboard
+npm run dev
 ```
 
-## Editing content
+Log in at **http://localhost:3001/login** with your `SEED_ADMIN_EMAIL` /
+`SEED_ADMIN_PASSWORD`.
 
-To update any text, edit the relevant file in `data/` — no component changes needed.
-The section order on the page is controlled in `app/page.tsx`.
+---
 
-## Tech
+## 5. Using the dashboard
 
-| Concern        | Choice                          |
-| -------------- | ------------------------------- |
-| Framework      | Next.js 14 (App Router)         |
-| Language       | TypeScript                      |
-| Styling        | Tailwind CSS                    |
-| Fonts          | Fraunces (display) + Inter      |
-| Map            | react-simple-maps + world-atlas |
+- **Sidebar** groups every content type (Identity, Background, Research,
+  Achievements, Content pages).
+- Each section has a **list** (with delete and ▲▼ reorder) and an **add / edit form**.
+- **Profile** and **Page text blocks** are single forms (no list).
+- **Users** (admins only) — add, edit, or remove people who can log in. Roles:
+  - **ADMIN** — full access, including managing users.
+  - **EDITOR** — can edit all content, but not users.
+  - **Validation when adding/editing a user:**
+    - **Name** — letters/spaces/hyphens/apostrophes/periods, and must be **unique**.
+    - **Email** — must be a valid address and **unique**.
+    - **Password** — at least 8 characters with **a letter, a number, and a special character**.
+- **Images** — Profile photo, Gallery, and News items support uploading an image
+  (sent to Cloudinary) or pasting an image URL.
+
+---
+
+## 6. Data model
+
+The schema lives in **`portfolio-dashboard/prisma/schema.prisma`** (source of truth).
+`Frontend/prisma/schema.prisma` is a copy used only to generate the read client.
+
+> If you change the schema: edit it in `portfolio-dashboard`, run
+> `npx prisma migrate dev` there, then copy the updated `schema.prisma` into
+> `Frontend/prisma/` and run `npx prisma generate` in `Frontend`.
+
+---
+
+## 7. Deploying (Vercel)
+
+Deploy the two folders as **two separate Vercel projects**, both pointing at the
+**same** Neon database.
+
+1. **Frontend project**
+   - Root directory: `Frontend`
+   - Env var: `DATABASE_URL`
+2. **Dashboard project**
+   - Root directory: `portfolio-dashboard`
+   - Env vars: `DATABASE_URL`, `JWT_SECRET`, `CLOUDINARY_CLOUD_NAME`,
+     `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
+   - (No need for `SEED_*` in production — see below.)
+
+Both apps run `prisma generate` automatically during build. After the first deploy,
+seed production once from your machine (with the production `DATABASE_URL` in your
+local dashboard `.env`): `npm run db:seed`.
+
+> Tip: for higher traffic you can switch `DATABASE_URL` to Neon's **pooled**
+> connection string and keep the direct one as `DIRECT_URL` for migrations.
+
+---
+
+## 8. Security notes
+
+- Passwords are hashed with bcrypt; sessions are signed JWTs in an httpOnly **session
+  cookie** (cleared when the browser closes, so users are logged out automatically).
+- **New users are validated**: unique name, valid + unique email, and a strong password
+  (8+ chars with a letter, number and special character). You can optionally restrict
+  *which* emails may be added with `ALLOWED_EMAIL_DOMAINS` / `ALLOWED_EMAILS` in the
+  dashboard `.env` (leave blank to allow any valid email).
+- If your Cloudinary **API Secret** was ever shared in plain text, rotate it in the
+  Cloudinary dashboard and update `CLOUDINARY_API_SECRET`.
+- Change the seeded admin password after first login (Users → edit yourself).

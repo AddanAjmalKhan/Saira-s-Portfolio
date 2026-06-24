@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-[#161a36] text-slate-200 antialiased;
+}
+
+/* Dark background with a smooth, dull dot-grid texture */
+.app-bg {
+  background-color: #161a36;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: -11px -11px;
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-brand-light/60 focus:bg-white/[0.08] focus:ring-0;
+  }
+  select.input option {
+    @apply bg-[#1e2348] text-white;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-white/70;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-brand-gradient text-white shadow-soft hover:shadow-glow hover:brightness-110 active:brightness-95;
+  }
+  .btn-secondary {
+    @apply btn border border-white/15 bg-white/[0.06] text-white/90 hover:bg-white/10;
+  }
+  .btn-danger {
+    @apply btn border border-red-400/30 bg-red-500/10 text-red-200 hover:bg-red-500/20;
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.05] shadow-xl backdrop-blur-xl;
+  }
+}
+
+/* Slim dark scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}

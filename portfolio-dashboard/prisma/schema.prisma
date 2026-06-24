@@ -1,0 +1,236 @@
+// Prisma schema — single source of truth for the portfolio content.
+// The dashboard owns this schema and runs migrations. The Frontend app keeps a
+// copy of this file and only runs `prisma generate` (read-only client).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(EDITOR)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Pending email invitation for a new user. The account is only created once the
+// invitee opens the emailed link and sets their own password.
+model Invitation {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  role        Role     @default(EDITOR)
+  tokenHash   String   @unique
+  invitedBy   String?
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+// Singleton: the one profile row (id is always "profile").
+model Profile {
+  id              String   @id @default("profile")
+  name            String
+  title           String
+  affiliation     String
+  tagline         String
+  summary         String
+  nationality     String
+  location        String
+  email           String
+  phone           String
+  linkedin        String
+  researchgate    String
+  projectName     String
+  projectUrl      String
+  profileImageUrl String?
+  updatedAt       DateTime @updatedAt
+}
+
+model QuickFact {
+  id    String @id @default(cuid())
+  label String
+  value String
+  order Int    @default(0)
+}
+
+model NavItem {
+  id    String @id @default(cuid())
+  label String
+  href  String
+  order Int    @default(0)
+}
+
+model Education {
+  id           String   @id @default(cuid())
+  period       String
+  title        String
+  organisation String
+  location     String
+  grade        String?
+  degree       String?
+  university   String?
+  description  String?
+  highlights   String[]
+  tags         String[]
+  order        Int      @default(0)
+}
+
+model Experience {
+  id           String   @id @default(cuid())
+  period       String
+  title        String
+  organisation String
+  location     String
+  highlights   String[]
+  tags         String[]
+  order        Int      @default(0)
+}
+
+model Publication {
+  id      String  @id @default(cuid())
+  authors String
+  year    String
+  title   String
+  venue   String
+  journal String?
+  volume  String?
+  issue   String?
+  pages   String?
+  doi     String?
+  order   Int     @default(0)
+}
+
+model Training {
+  id          String  @id @default(cuid())
+  title       String
+  country     String?
+  institution String?
+  duration    String?
+  description String?
+  order       Int     @default(0)
+}
+
+model SkillGroup {
+  id    String   @id @default(cuid())
+  title String
+  items String[]
+  order Int      @default(0)
+}
+
+model Language {
+  id    String @id @default(cuid())
+  name  String
+  level String
+  value Int
+  order Int    @default(0)
+}
+
+model Reference {
+  id          String @id @default(cuid())
+  name        String
+  role        String
+  affiliation String
+  email       String
+  order       Int    @default(0)
+}
+
+model Honour {
+  id     String @id @default(cuid())
+  title  String
+  detail String
+  year   String
+  order  Int    @default(0)
+}
+
+model SummerSchool {
+  id         String   @id @default(cuid())
+  period     String
+  title      String
+  host       String
+  location   String
+  highlights String[]
+  order      Int      @default(0)
+}
+
+model Conference {
+  id        String @id @default(cuid())
+  date      String
+  title     String
+  organiser String
+  order     Int    @default(0)
+}
+
+model Membership {
+  id     String  @id @default(cuid())
+  name   String
+  detail String?
+  order  Int     @default(0)
+}
+
+model MapLocation {
+  id      String @id @default(cuid())
+  slug    String @unique
+  city    String
+  country String
+  lng     Float
+  lat     Float
+  role    String
+  detail  String
+  period  String
+  order   Int    @default(0)
+}
+
+model NewsItem {
+  id          String  @id @default(cuid())
+  date        String
+  title       String
+  category    String
+  description String
+  imageUrl    String?
+  order       Int     @default(0)
+}
+
+model GalleryImage {
+  id       String @id @default(cuid())
+  imageUrl String
+  caption  String
+  order    Int    @default(0)
+}
+
+model ResearchInterest {
+  id          String @id @default(cuid())
+  title       String
+  description String
+  icon        String
+  order       Int    @default(0)
+}
+
+model Collaboration {
+  id          String @id @default(cuid())
+  title       String
+  partner     String
+  description String
+  order       Int    @default(0)
+}
+
+// Editable static text blocks for page intros / headings / CTAs.
+model PageContent {
+  id         String  @id @default(cuid())
+  key        String  @unique
+  heading    String?
+  subheading String?
+  body       String?
+}
