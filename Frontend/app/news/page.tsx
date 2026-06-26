@@ -14,15 +14,15 @@ export default async function NewsPage() {
             block.heading
           ) : (
             <>
-              News & <span className="text-mint">Updates</span>
+              News & <span className="text-gradient">Updates</span>
             </>
           )}
         </h1>
-        
+
         <div className="grid gap-8">
           {news.map((item, index) => (
-            <div key={index} className="group relative flex flex-col sm:flex-row gap-6 rounded-md border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-mint/30">
-              <div className="relative flex h-48 w-full shrink-0 items-center justify-center overflow-hidden rounded-md bg-mint/10 sm:h-auto sm:w-48 text-mint group-hover:text-white group-hover:bg-mint transition-colors">
+            <div key={index} className="group relative flex flex-col gap-6 card-modern p-6 sm:flex-row">
+              <div className="relative flex h-48 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-mint/10 sm:h-auto sm:w-48 text-mint transition-colors group-hover:bg-brand-grad group-hover:text-white">
                 {item.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={item.imageUrl} alt={item.title} className="absolute inset-0 h-full w-full object-cover" />
@@ -32,7 +32,7 @@ export default async function NewsPage() {
               </div>
               <div className="flex flex-col justify-center">
                 <div className="mb-2 flex items-center gap-3">
-                  <span className="rounded-full bg-mint/10 px-3 py-1 text-xs font-semibold text-mint">{item.category}</span>
+                  <span className="chip-grad">{item.category}</span>
                   <span className="text-sm font-medium text-mint">{item.date}</span>
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-slate-900 group-hover:text-mint transition-colors">{item.title}</h3>

@@ -13,12 +13,12 @@ export default async function PublicationsPage() {
     <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <h1 className="mb-12 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Scientific <span className="text-mint">Publications</span>
+          Scientific <span className="text-gradient">Publications</span>
         </h1>
-        
+
         <div className="grid gap-6">
           {publications.map((pub, index) => (
-            <div key={index} className="group relative rounded-md border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-mint/30">
+            <div key={index} className="group relative card-modern p-6">
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-slate-900 mb-2 leading-snug group-hover:text-mint transition-colors">

@@ -31,7 +31,7 @@ export default async function ResearchInterestsPage() {
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {interests.map((item, index) => (
-            <div key={index} className="group relative card-modern p-10 text-center hover:bg-brand-grad hover:[box-shadow:0_22px_50px_-22px_rgba(8,145,178,0.45)]">
+            <div key={index} className="group relative card-modern p-10 text-center hover:bg-brand-grad">
               <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-mint/20 text-mint transition-colors group-hover:border-white/30 group-hover:text-white bg-transparent">
                 <IconMap name={item.icon} className="h-8 w-8" />
               </div>

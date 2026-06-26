@@ -15,20 +15,8 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
   const pathname = usePathname();
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 sm:top-0 w-full bg-white shadow-sm">
-      <div className="pointer-events-auto mx-auto flex max-w-container items-center justify-between gap-4 bg-white px-6 py-4">
-        <Link
-          href="/"
-          className="group flex flex-shrink-0 items-center gap-3 font-display text-xl font-bold tracking-tight text-slate-900"
-        >
-          <div className="relative h-8 w-8">
-             {/* Simple red book/portfolio icon similar to the image */}
-             <div className="absolute inset-0 bg-mint rounded-sm transform rotate-12 transition-transform group-hover:rotate-45" />
-             <div className="absolute inset-0 bg-forest-900 rounded-sm transform -rotate-12 transition-transform group-hover:rotate-0" />
-          </div>
-          <span className="hidden sm:inline tracking-wider uppercase">Portfolio</span>
-        </Link>
-
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/60 bg-white/75 shadow-sm backdrop-blur-xl">
+      <div className="pointer-events-auto mx-auto flex max-w-container items-center justify-between gap-4 px-6 py-4">
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.slice(0, 5).map((item) => {
@@ -68,10 +56,7 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
           </div>
         </nav>
 
-        <a
-          href="/contact"
-          className="hidden md:inline-flex items-center justify-center rounded-full bg-mint px-6 py-3 text-sm font-bold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
-        >
+        <a href="/contact" className="btn-grad hidden px-6 py-3 md:inline-flex">
           Contact us
         </a>
 
@@ -103,10 +88,7 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
               </Link>
             );
           })}
-          <a
-            href="/contact"
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-mint px-5 py-3 text-sm font-bold text-white shadow-lg shadow-mint/20 transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-mint/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
-          >
+          <a href="/contact" className="btn-grad mt-4 px-5 py-3">
             Contact us
           </a>
         </div>
