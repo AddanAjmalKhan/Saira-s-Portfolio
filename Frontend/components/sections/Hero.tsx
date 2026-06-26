@@ -79,11 +79,13 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
             </div>
 
             <div className="relative animate-fade-up [animation-delay:120ms] z-10 order-1 lg:order-2 flex justify-center lg:justify-end w-full">
-              <div className="relative w-full max-w-[20rem] sm:max-w-[24rem] lg:max-w-[30rem]">
-                {/* Soft gradient glow behind the card */}
-                <div className="absolute -inset-3 rounded-[2.4rem] bg-brand-grad opacity-30 blur-2xl" aria-hidden />
+              <div className="relative mx-auto w-full max-w-[15.5rem] sm:max-w-[18rem] lg:max-w-[20.5rem]">
+                {/* Colored block behind (offset, bottom-right) */}
+                <div className="absolute -bottom-5 -right-5 z-0 h-32 w-32 rounded-2xl bg-brand-grad opacity-90 shadow-2xl shadow-cyan-500/30" aria-hidden />
+                {/* Soft gradient glow */}
+                <div className="absolute -inset-3 z-0 rounded-[2.4rem] bg-brand-grad opacity-25 blur-2xl" aria-hidden />
                 {/* Image card — cropped from the top so it ends around the green shirt */}
-                <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] shadow-2xl backdrop-blur-sm">
+                <div className="relative z-10 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] shadow-2xl backdrop-blur-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={profile.profileImageUrl || "/profile.jpg"}
@@ -91,6 +93,16 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
                     className="aspect-[4/5] w-full object-cover object-top"
                   />
                 </div>
+                {/* Outlined corner frame (top-left) */}
+                <div className="absolute -left-4 -top-4 z-20 h-24 w-24 rounded-2xl border-2 border-cyan-400/50" aria-hidden />
+                {/* Accent dots (right) */}
+                <div className="absolute -right-4 top-[40%] z-20 flex flex-col gap-2.5" aria-hidden>
+                  <span className="h-2.5 w-2.5 rounded-sm bg-cyan-400" />
+                  <span className="h-2.5 w-2.5 rounded-sm bg-cyan-400/60" />
+                  <span className="h-2.5 w-2.5 rounded-sm bg-cyan-400/30" />
+                </div>
+                {/* Sparkle */}
+                <span className="absolute -top-3 right-8 z-20 text-xl text-cyan-300/80" aria-hidden>✦</span>
               </div>
             </div>
           </div>
