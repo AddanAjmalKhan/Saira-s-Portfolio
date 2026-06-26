@@ -17,8 +17,8 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/60 bg-white/75 shadow-sm backdrop-blur-xl">
       <div className="pointer-events-auto mx-auto flex max-w-container items-center justify-between gap-4 px-6 py-4">
-        {/* Desktop nav — all options inline */}
-        <nav className="hidden items-center gap-x-5 lg:flex xl:gap-x-7">
+        {/* Desktop nav — all options inline, centered */}
+        <nav className="hidden items-center justify-center gap-x-6 lg:flex lg:flex-1 xl:gap-x-8">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -35,15 +35,11 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
           })}
         </nav>
 
-        <a href="/contact" className="btn-grad hidden shrink-0 px-6 py-3 lg:inline-flex">
-          Contact us
-        </a>
-
         {/* Mobile toggle */}
         <input type="checkbox" id="nav-toggle" className="peer hidden" />
         <label
           htmlFor="nav-toggle"
-          className="flex cursor-pointer flex-col gap-1.5 p-2 lg:hidden"
+          className="ml-auto flex cursor-pointer flex-col gap-1.5 p-2 lg:hidden"
           aria-label="Toggle navigation"
         >
           <span className="h-0.5 w-6 rounded bg-forest-900" />
@@ -67,9 +63,6 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
               </Link>
             );
           })}
-          <a href="/contact" className="btn-grad mt-4 px-5 py-3">
-            Contact us
-          </a>
         </div>
       </div>
     </header>
