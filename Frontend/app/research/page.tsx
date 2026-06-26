@@ -27,7 +27,7 @@ export default async function ResearchInterestsPage() {
 
   return (
     <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
             {block?.heading ? block.heading : (<>Research <span className="text-gradient">Interests</span></>)}
@@ -38,15 +38,15 @@ export default async function ResearchInterestsPage() {
           </p>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {interests.map((item, index) => {
             const c = ICON_COLORS[item.icon] ?? DEFAULT_ICON_COLOR;
             return (
-            <div key={index} className="group relative card-modern p-10 text-center hover:bg-brand-grad">
-              <div className={`mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border-2 transition-colors group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white ${c.text} ${c.border} ${c.bg}`}>
-                <IconMap name={item.icon} className="h-8 w-8" />
+            <div key={index} className="group relative card-modern px-6 py-8 text-center hover:bg-brand-grad">
+              <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border-2 transition-colors group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white ${c.text} ${c.border} ${c.bg}`}>
+                <IconMap name={item.icon} className="h-7 w-7" />
               </div>
-              <h3 className="mb-4 text-xl font-bold text-slate-900 group-hover:text-white transition-colors">{item.title}</h3>
+              <h3 className="mb-3 text-lg font-bold text-slate-900 group-hover:text-white transition-colors">{item.title}</h3>
               <p className="text-sm leading-relaxed text-slate-600 group-hover:text-white/90 transition-colors">{item.description}</p>
             </div>
             );
