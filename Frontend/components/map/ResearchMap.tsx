@@ -9,9 +9,11 @@ interface ResearchMapProps {
   activeId?: string | null;
   onActiveIdChange?: (id: string | null) => void;
   hideInfoPanel?: boolean;
+  /** Optional slug -> label override for the hover text (e.g. show the university name). */
+  markerLabels?: Record<string, string>;
 }
 
-export default function ResearchMap({ geometry, activeId: externalActiveId, onActiveIdChange, hideInfoPanel = false }: ResearchMapProps) {
+export default function ResearchMap({ geometry, activeId: externalActiveId, onActiveIdChange, hideInfoPanel = false, markerLabels }: ResearchMapProps) {
   const { width, height, countries, markers } = geometry;
   const [internalActiveId, setInternalActiveId] = useState<string | null>(null);
   
@@ -36,14 +38,27 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
           role="img"
           aria-label="World map of research and study locations"
         >
+          <defs>
+            <linearGradient id="rm-land" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#d6f3f8" />
+              <stop offset="100%" stopColor="#b3e4ee" />
+            </linearGradient>
+            <radialGradient id="rm-dot" cx="35%" cy="30%" r="75%">
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="100%" stopColor="#0e7490" />
+            </radialGradient>
+            <filter id="rm-glow" x="-60%" y="-60%" width="220%" height="220%">
+              <feDropShadow dx="0" dy="0" stdDeviation="2.4" floodColor="#0891b2" floodOpacity="0.6" />
+            </filter>
+          </defs>
           <g>
             {countries.map((d, i) => (
               <path
                 key={i}
                 d={d}
-                fill="#d8eef2"
-                stroke="#a5dde6"
-                strokeWidth={0.4}
+                fill="url(#rm-land)"
+                stroke="#7fd0da"
+                strokeWidth={0.5}
               />
             ))}
           </g>
@@ -77,10 +92,11 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                     />
                   )}
                   <circle
-                    r={isActive ? 6 : 4}
-                    fill="#000000"
+                    r={isActive ? 7 : 5}
+                    fill="url(#rm-dot)"
                     stroke="#ffffff"
-                    strokeWidth={1.4}
+                    strokeWidth={1.6}
+                    filter="url(#rm-glow)"
                     style={{ transition: "r 0.2s ease" }}
                   />
                   {isActive && (
@@ -94,7 +110,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                         strokeWidth: 3,
                       }}
                     >
-                      {loc.city}
+                      {markerLabels?.[loc.id] ?? loc.city}
                     </text>
                   )}
                 </g>

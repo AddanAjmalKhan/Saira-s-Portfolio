@@ -7,7 +7,10 @@ export const dynamic = "force-dynamic";
 
 export default async function EducationPage() {
   const [education, locations] = await Promise.all([getEducation(), getMapLocations()]);
-  const geometry = buildWorldMap(locations);
+  // Only show the four degree-study locations on the education map.
+  const EDU_SLUGS = ["san-juan", "viterbo", "godollo", "sialkot"];
+  const eduLocations = locations.filter((l) => EDU_SLUGS.includes(l.id));
+  const geometry = buildWorldMap(eduLocations);
 
   return (
     <main className="min-h-screen w-full bg-[#f6f8fb]">

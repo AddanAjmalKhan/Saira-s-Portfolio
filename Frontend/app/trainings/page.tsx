@@ -32,8 +32,7 @@ export default async function TrainingsPage() {
                     {training.country}
                   </div>
                   <h3 className="mb-3 text-2xl font-bold text-slate-900 leading-tight">{training.title}</h3>
-                  <p className="mb-5 font-semibold text-mint text-sm flex items-center gap-2">
-                    <span className="w-4 h-px bg-forest-300"></span>
+                  <p className="mb-5 text-sm font-semibold text-mint">
                     {training.institution}
                   </p>
                   {training.description && (

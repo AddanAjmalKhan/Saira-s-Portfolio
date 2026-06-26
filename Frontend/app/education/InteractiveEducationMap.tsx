@@ -10,21 +10,31 @@ interface InteractiveEducationMapProps {
   geometry: WorldMapGeometry;
 }
 
+// Avoid repeating the place: if the institution name already contains the city,
+// show only the country; otherwise show the full "City, Country".
+function placeLabel(org: string, location: string): string {
+  if (!location) return "";
+  const parts = location.split(",").map((s) => s.trim());
+  if (parts.length < 2) return location; // e.g. just "Hungary"
+  const city = parts[0];
+  const country = parts.slice(1).join(", ");
+  return org && org.toLowerCase().includes(city.toLowerCase()) ? country : location;
+}
+
 export default function InteractiveEducationMap({ education, geometry }: InteractiveEducationMapProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   // Map the location strings to the map IDs we defined in data/locations.ts
-  const locationToIdMap: Record<string, string> = {
-    "Argentina": "san-juan",
-    "Italy": "viterbo",
-    "Hungary": "godollo",
-  };
-  
-  // We can just use a helper function to get ID from degree text or location
+  // Match an education entry to a map marker slug by keywords in its
+  // location / institution / degree (robust to "City, Country" strings).
   const getMapId = (item: any) => {
-    if (item.degree.includes("Zoology")) return "sialkot";
-    if (item.degree.includes("Education")) return "islamabad";
-    return locationToIdMap[item.location] || null;
+    const hay = `${item.location ?? ""} ${item.organisation ?? ""} ${item.university ?? ""} ${item.degree ?? ""}`.toLowerCase();
+    if (hay.includes("san juan")) return "san-juan";
+    if (hay.includes("viterbo") || hay.includes("tuscia")) return "viterbo";
+    if (hay.includes("hungary") || hay.includes("mate") || hay.includes("gödöllő") || hay.includes("godollo")) return "godollo";
+    if (hay.includes("sialkot")) return "sialkot";
+    if (hay.includes("islamabad")) return "islamabad";
+    return null;
   };
 
   const educationWithIds = education.map((item) => ({
@@ -32,18 +42,20 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
     id: getMapId(item),
   }));
 
-  const sortedEducation = activeId
-    ? [
-        ...educationWithIds.filter((entry) => entry.id === activeId),
-        ...educationWithIds.filter((entry) => entry.id !== activeId),
-      ]
-    : educationWithIds;
+  // Keep a stable order (no reshuffle on hover) for smooth scrolling.
+  const sortedEducation = educationWithIds;
+
+  // Map each marker slug to its university name (shown on hover over the map dot).
+  const markerLabels: Record<string, string> = {};
+  for (const { item, id } of educationWithIds) {
+    if (id) markerLabels[id] = item.organisation || item.university || "";
+  }
 
   return (
     <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] items-start mt-8">
       {/* Scrollable Education List */}
       <div
-        className="space-y-6 lg:max-h-[75vh] lg:overflow-y-auto scrollbar-slim pr-2 sm:pr-4 pb-12 lg:scroll-smooth lg:snap-y lg:snap-mandatory"
+        className="space-y-6 lg:max-h-[75vh] lg:overflow-y-auto scrollbar-slim pr-2 sm:pr-4 pb-12 lg:scroll-smooth"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {sortedEducation.map(({ item, id }, index) => {
@@ -54,7 +66,7 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
               <div 
                 className={`group bg-white rounded-xl border p-6 transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? "border-mint shadow-[0_12px_50px_rgba(8,145,178,0.18)] scale-[1.02] bg-mint/5"
+                    ? "border-mint shadow-[0_12px_50px_rgba(8,145,178,0.18)] bg-mint/5"
                     : "border-slate-200 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:border-mint/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 }`}
                 onMouseEnter={() => setActiveId(id)}
@@ -75,8 +87,10 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                   <span>
-                    {item.university}
-                    <span className="text-mint font-normal ml-1">— {item.location}</span>
+                    {item.organisation || item.university}
+                    <span className="text-mint font-normal ml-1">
+                      — {placeLabel(item.organisation || item.university, item.location)}
+                    </span>
                   </span>
                 </div>
                 
@@ -92,10 +106,11 @@ export default function InteractiveEducationMap({ education, geometry }: Interac
       {/* Sticky Map */}
       <div className="lg:sticky lg:top-32 relative z-10 w-full rounded-3xl p-4 bg-[#eef2f7] border border-slate-200 shadow-xl">
         <ResearchMap 
-          geometry={geometry} 
-          activeId={activeId} 
+          geometry={geometry}
+          activeId={activeId}
           onActiveIdChange={setActiveId}
           hideInfoPanel={true}
+          markerLabels={markerLabels}
         />
         
         <div className="mt-6 text-center pb-2">

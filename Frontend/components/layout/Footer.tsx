@@ -95,7 +95,6 @@ export default function Footer({
                   {profile.email}
                 </a>
               </li>
-              <li>{profile.phone}</li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,15 @@ import { getResearchInterests, getPageContent } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
+// A distinct colour per icon (used until the card is hovered, when it turns white).
+const ICON_COLORS: Record<string, { text: string; border: string; bg: string }> = {
+  dna: { text: "text-cyan-500", border: "border-cyan-500/30", bg: "bg-cyan-500/10" },
+  leaf: { text: "text-emerald-500", border: "border-emerald-500/30", bg: "bg-emerald-500/10" },
+  database: { text: "text-violet-500", border: "border-violet-500/30", bg: "bg-violet-500/10" },
+  shield: { text: "text-amber-500", border: "border-amber-500/30", bg: "bg-amber-500/10" },
+};
+const DEFAULT_ICON_COLOR = { text: "text-mint", border: "border-mint/20", bg: "bg-mint/10" };
+
 export default async function ResearchInterestsPage() {
   const [interests, pages] = await Promise.all([getResearchInterests(), getPageContent()]);
   const block = pages["research"];
@@ -30,15 +39,18 @@ export default async function ResearchInterestsPage() {
         </div>
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {interests.map((item, index) => (
+          {interests.map((item, index) => {
+            const c = ICON_COLORS[item.icon] ?? DEFAULT_ICON_COLOR;
+            return (
             <div key={index} className="group relative card-modern p-10 text-center hover:bg-brand-grad">
-              <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-mint/20 text-mint transition-colors group-hover:border-white/30 group-hover:text-white bg-transparent">
+              <div className={`mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border-2 transition-colors group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white ${c.text} ${c.border} ${c.bg}`}>
                 <IconMap name={item.icon} className="h-8 w-8" />
               </div>
               <h3 className="mb-4 text-xl font-bold text-slate-900 group-hover:text-white transition-colors">{item.title}</h3>
               <p className="text-sm leading-relaxed text-slate-600 group-hover:text-white/90 transition-colors">{item.description}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </main>
