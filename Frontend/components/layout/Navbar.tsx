@@ -17,9 +17,9 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/60 bg-white/75 shadow-sm backdrop-blur-xl">
       <div className="pointer-events-auto mx-auto flex max-w-container items-center justify-between gap-4 px-6 py-4">
-        {/* Desktop nav — all options inline, centered */}
+        {/* Desktop nav — all options inline, centered (Contact lives in the button) */}
         <nav className="hidden items-center justify-center gap-x-6 lg:flex lg:flex-1 xl:gap-x-8">
-          {navItems.map((item) => {
+          {navItems.filter((item) => item.href !== "/contact").map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
@@ -35,6 +35,10 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
           })}
         </nav>
 
+        <a href="/contact" className="btn-grad hidden shrink-0 px-6 py-3 lg:inline-flex">
+          Contact us
+        </a>
+
         {/* Mobile toggle */}
         <input type="checkbox" id="nav-toggle" className="peer hidden" />
         <label
@@ -49,7 +53,7 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
 
         {/* Mobile panel */}
         <div className="absolute inset-x-0 top-16 hidden flex-col gap-1 rounded-b-3xl border border-slate-200 bg-white p-6 shadow-2xl peer-checked:flex lg:hidden">
-          {navItems.map((item) => {
+          {navItems.filter((item) => item.href !== "/contact").map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
@@ -63,6 +67,9 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
               </Link>
             );
           })}
+          <a href="/contact" className="btn-grad mt-4 px-5 py-3">
+            Contact us
+          </a>
         </div>
       </div>
     </header>
