@@ -30,8 +30,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
   return (
     <div className={`grid gap-8 ${hideInfoPanel ? "" : "lg:grid-cols-[1.55fr_1fr] lg:items-center"}`}>
       {/* Map */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-[#eef2f7] shadow-sm">
-        <div className="bg-dot-grid absolute inset-0 opacity-60" aria-hidden />
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0b1020] shadow-lg">
+        <div className="bg-dot-grid absolute inset-0 opacity-40" aria-hidden />
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className="relative w-full"
@@ -120,8 +120,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
         </svg>
 
         {/* Legend */}
-        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-slate-200 bg-[#eef2f7]/90 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-slate-900 backdrop-blur shadow-sm">
-          <span className="h-2.5 w-2.5 rounded-full bg-mint" />
+        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest text-slate-200 backdrop-blur shadow-sm">
+          <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
           Research &amp; study sites
         </div>
       </div>
@@ -130,27 +130,27 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
       {!hideInfoPanel && (
         <div className="relative min-h-[16rem]">
           {active ? (
-            <div className="bg-white shadow-sm border border-slate-200 animate-fade-up rounded-3xl p-7 transition-all duration-300">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-mint">
+            <div className="card-modern animate-fade-up rounded-3xl p-7 transition-all duration-300">
+              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-cyan-300">
                 {active.period}
               </span>
-              <h3 className="mt-3 font-display text-3xl font-semibold text-slate-900">
+              <h3 className="mt-3 font-display text-3xl font-semibold text-white">
                 {active.city},{" "}
-                <span className="text-mint">{active.country}</span>
+                <span className="text-cyan-300">{active.country}</span>
               </h3>
-              <p className="mt-1 text-sm font-medium text-mint">
+              <p className="mt-1 text-sm font-medium text-cyan-300">
                 {active.role}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              <p className="mt-4 text-sm leading-relaxed text-slate-400">
                 {active.detail}
               </p>
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-slate-200 bg-mint/10 p-7 h-full flex flex-col justify-center">
-              <h3 className="font-display text-2xl font-semibold text-slate-900">
+            <div className="rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-7 h-full flex flex-col justify-center">
+              <h3 className="font-display text-2xl font-semibold text-white">
                 Hover a marker to explore
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              <p className="mt-3 text-sm leading-relaxed text-slate-400">
                 Each point marks a place where I have studied, researched or
                 trained — across {distinctCountries} countries and two continents.
               </p>
@@ -162,7 +162,7 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                       onMouseEnter={() => setActiveId(loc.id)}
                       onFocus={() => setActiveId(loc.id)}
                       onMouseLeave={() => setActiveId(null)}
-                      className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-mint shadow-sm transition-colors hover:border-mint hover:bg-mint hover:text-white"
+                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-cyan-300 transition-colors hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-white"
                     >
                       {loc.city}
                     </button>

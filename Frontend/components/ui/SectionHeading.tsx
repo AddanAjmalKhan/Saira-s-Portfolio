@@ -44,19 +44,13 @@ export default function SectionHeading({
       </div>
 
       <h2
-        className={`mt-5 font-display text-[2.1rem] font-semibold leading-[1.04] tracking-tightest sm:text-5xl md:text-6xl ${
-          isDark ? "text-slate-900" : "text-slate-900"
-        }`}
+        className="mt-5 font-display text-[2.1rem] font-semibold leading-[1.04] tracking-tightest text-white sm:text-5xl md:text-6xl"
       >
         {title}
       </h2>
 
       {description && (
-        <p
-          className={`mt-6 text-base leading-relaxed sm:text-lg ${
-            isDark ? "text-slate-600" : "text-slate-600"
-          }`}
-        >
+        <p className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg">
           {description}
         </p>
       )}

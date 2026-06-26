@@ -26,13 +26,13 @@ export default async function ResearchInterestsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
+    <main className="min-h-screen pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="text-center mb-16">
-          <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
             {block?.heading ? block.heading : (<>Research <span className="text-gradient">Interests</span></>)}
           </h1>
-          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-slate-300 max-w-2xl mx-auto">
             {block?.subheading ??
               "Focusing on the intersection of air forensics, genomics, and plant pathology to solve real-world biological challenges."}
           </p>
@@ -46,8 +46,8 @@ export default async function ResearchInterestsPage() {
               <div className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border-2 transition-colors group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white ${c.text} ${c.border} ${c.bg}`}>
                 <IconMap name={item.icon} className="h-7 w-7" />
               </div>
-              <h3 className="mb-3 text-lg font-bold text-slate-900 group-hover:text-white transition-colors">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-slate-600 group-hover:text-white/90 transition-colors">{item.description}</p>
+              <h3 className="mb-3 text-lg font-bold text-white transition-colors">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-slate-400 group-hover:text-white/90 transition-colors">{item.description}</p>
             </div>
             );
           })}

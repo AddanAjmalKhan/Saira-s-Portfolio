@@ -15,7 +15,7 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
   const pathname = usePathname();
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/60 bg-white/75 shadow-sm backdrop-blur-xl">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-[#080c18]/70 shadow-lg shadow-black/20 backdrop-blur-xl">
       <div className="pointer-events-auto mx-auto flex max-w-container items-center justify-between gap-4 px-6 py-4">
         {/* Desktop nav — all options inline, centered (Contact lives in the button) */}
         <nav className="hidden items-center justify-center gap-x-6 lg:flex lg:flex-1 xl:gap-x-8">
@@ -25,8 +25,8 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative whitespace-nowrap text-sm font-bold transition-colors hover:text-mint ${
-                  isActive ? "text-mint" : "text-slate-900"
+                className={`relative whitespace-nowrap text-sm font-bold transition-colors hover:text-cyan-300 ${
+                  isActive ? "text-cyan-300" : "text-slate-200"
                 }`}
               >
                 {item.label}
@@ -46,21 +46,21 @@ export default function Navbar({ navItems }: { navItems: NavItem[] }) {
           className="ml-auto flex cursor-pointer flex-col gap-1.5 p-2 lg:hidden"
           aria-label="Toggle navigation"
         >
-          <span className="h-0.5 w-6 rounded bg-forest-900" />
-          <span className="h-0.5 w-6 rounded bg-forest-900" />
-          <span className="h-0.5 w-6 rounded bg-forest-900" />
+          <span className="h-0.5 w-6 rounded bg-slate-200" />
+          <span className="h-0.5 w-6 rounded bg-slate-200" />
+          <span className="h-0.5 w-6 rounded bg-slate-200" />
         </label>
 
         {/* Mobile panel */}
-        <div className="absolute inset-x-0 top-16 hidden flex-col gap-1 rounded-b-3xl border border-slate-200 bg-white p-6 shadow-2xl peer-checked:flex lg:hidden">
+        <div className="absolute inset-x-0 top-16 hidden flex-col gap-1 rounded-b-3xl border border-white/10 bg-[#0b1020]/95 p-6 shadow-2xl backdrop-blur-xl peer-checked:flex lg:hidden">
           {navItems.filter((item) => item.href !== "/contact").map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors hover:bg-mint/10 hover:text-mint ${
-                  isActive ? "text-mint bg-mint/10" : "text-slate-900"
+                className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors hover:bg-cyan-400/10 hover:text-cyan-300 ${
+                  isActive ? "text-cyan-300 bg-cyan-400/10" : "text-slate-200"
                 }`}
               >
                 {item.label}

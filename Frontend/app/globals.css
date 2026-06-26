@@ -8,19 +8,20 @@
   }
 
   body {
-    @apply bg-[#f6f8fb] text-slate-700 antialiased;
+    @apply text-slate-300 antialiased;
+    background-color: #080c18;
     font-feature-settings: "ss01", "cv01";
     background-image:
-      radial-gradient(42rem 42rem at 108% -6%, rgba(6, 182, 212, 0.12), transparent 60%),
-      radial-gradient(36rem 36rem at -8% 8%, rgba(37, 99, 235, 0.08), transparent 60%);
+      radial-gradient(46rem 46rem at 110% -8%, rgba(8, 145, 178, 0.18), transparent 60%),
+      radial-gradient(40rem 40rem at -10% 6%, rgba(37, 99, 235, 0.14), transparent 60%),
+      radial-gradient(36rem 36rem at 50% 120%, rgba(34, 211, 238, 0.10), transparent 60%);
     background-attachment: fixed;
   }
 
   ::selection {
-    @apply bg-ochre text-cream;
+    @apply bg-cyan-400/30 text-white;
   }
 
-  /* Respect users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -34,42 +35,34 @@
 }
 
 @layer utilities {
-  /* Dotted texture */
+  /* Dotted texture (light dots on dark) */
   .bg-dot-grid {
-    background-image: radial-gradient(
-      rgba(8, 145, 178, 0.14) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
-
   .bg-dot-grid-dark {
-    background-image: radial-gradient(
-      rgba(241, 236, 225, 0.06) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 26px 26px;
   }
 
-  /* Film-grain overlay (SVG noise, no asset needed) */
+  /* Film-grain overlay */
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.25;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
   }
 
-  /* Gradient text — vibrant cyan → teal → blue */
+  /* Vibrant gradient text — cyan → teal → blue */
   .text-gradient {
-    @apply bg-gradient-to-r from-[#22d3ee] via-[#0891b2] to-[#2563eb] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-300 via-[#22d3ee] to-blue-400 bg-clip-text text-transparent;
   }
-
   .text-gradient-warm {
-    @apply bg-gradient-to-r from-amber-soft via-amber to-amber-deep bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent;
   }
 
   /* Bold brand gradient surface */
@@ -79,63 +72,28 @@
 
   /* Modern gradient pill button */
   .btn-grad {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-grad px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/25 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/40 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-grad px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c18];
   }
 
-  /* Modern elevated card with hover lift + teal glow */
+  /* Dark glass card with hover lift + cyan glow */
   .card-modern {
-    @apply rounded-2xl border border-slate-200/70 bg-white/90 backdrop-blur-sm transition-all duration-300;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 14px 32px -18px rgba(15, 23, 42, 0.18);
+    @apply rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm transition-all duration-300;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
   }
   .card-modern:hover {
-    @apply -translate-y-1 border-mint/40;
-    box-shadow: 0 22px 50px -22px rgba(8, 145, 178, 0.4);
+    @apply -translate-y-1 border-cyan-400/40 bg-white/[0.07];
+    box-shadow: 0 24px 55px -24px rgba(8, 145, 178, 0.55);
   }
 
   /* Gradient accent chip */
   .chip-grad {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-mint/20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 text-xs font-semibold text-mint;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300;
   }
 
-  /* Animated soft gradient blob (decorative) */
+  /* Animated soft gradient blob */
   .blob {
     @apply pointer-events-none absolute rounded-full blur-3xl;
-    background-image: radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.5), rgba(37, 99, 235, 0.18) 60%, transparent 70%);
-  }
-
-  /* Outlined "stroke" display text (on dark green blocks) */
-  .text-stroke {
-    -webkit-text-stroke: 1.4px rgba(241, 236, 225, 0.4);
-    color: transparent;
-  }
-
-  /* Outlined display text in the accent olive */
-  .text-stroke-ochre {
-    -webkit-text-stroke: 1.4px rgba(8, 145, 178, 0.55);
-    color: transparent;
-  }
-
-  .text-stroke-ink {
-    -webkit-text-stroke: 1.4px rgba(33, 31, 23, 0.22);
-    color: transparent;
-  }
-
-  /* Edge fade mask for marquees */
-  .mask-fade-x {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
-    );
+    background-image: radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.55), rgba(37, 99, 235, 0.22) 60%, transparent 72%);
   }
 
   .text-balance {
@@ -145,12 +103,11 @@
     text-wrap: pretty;
   }
 
-  /* Gradient border wrapper */
+  /* Gradient border wrapper (dark surface) */
   .gradient-ring {
     background:
-      linear-gradient(var(--ring-bg, #0f172a), var(--ring-bg, #0f172a))
-        padding-box,
-      linear-gradient(120deg, #67e8f9, #0891b2, #0e7490) border-box;
+      linear-gradient(var(--ring-bg, #0d1326), var(--ring-bg, #0d1326)) padding-box,
+      linear-gradient(120deg, #22d3ee, #0891b2, #2563eb) border-box;
     border: 1px solid transparent;
   }
 
@@ -160,15 +117,15 @@
   }
   .scrollbar-slim {
     scrollbar-width: thin;
-    scrollbar-color: #67e8f9 transparent;
+    scrollbar-color: rgba(34, 211, 238, 0.4) transparent;
   }
   .scrollbar-slim::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-forest-300;
+    @apply rounded-full bg-cyan-400/40;
   }
   .scrollbar-slim::-webkit-scrollbar-track {
     background: transparent;
   }
   .scrollbar-slim::-webkit-scrollbar-thumb:hover {
-    @apply bg-forest-400;
+    @apply bg-cyan-400/60;
   }
 }

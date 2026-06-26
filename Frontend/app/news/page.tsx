@@ -7,9 +7,9 @@ export default async function NewsPage() {
   const block = pages["news"];
 
   return (
-    <main className="min-h-screen bg-[#f6f8fb] pt-32 pb-20 sm:pt-40">
+    <main className="min-h-screen pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <h1 className="mb-12 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+        <h1 className="mb-12 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
           {block?.heading ? (
             block.heading
           ) : (
@@ -22,7 +22,7 @@ export default async function NewsPage() {
         <div className="grid gap-8">
           {news.map((item, index) => (
             <div key={index} className="group relative flex flex-col gap-6 card-modern p-6 sm:flex-row">
-              <div className="relative flex h-48 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-mint/10 sm:h-auto sm:w-48 text-mint transition-colors group-hover:bg-brand-grad group-hover:text-white">
+              <div className="relative flex h-48 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-cyan-400/10 sm:h-auto sm:w-48 text-cyan-300 transition-colors group-hover:bg-brand-grad group-hover:text-white">
                 {item.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={item.imageUrl} alt={item.title} className="absolute inset-0 h-full w-full object-cover" />
@@ -33,10 +33,10 @@ export default async function NewsPage() {
               <div className="flex flex-col justify-center">
                 <div className="mb-2 flex items-center gap-3">
                   <span className="chip-grad">{item.category}</span>
-                  <span className="text-sm font-medium text-mint">{item.date}</span>
+                  <span className="text-sm font-medium text-cyan-300">{item.date}</span>
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-slate-900 group-hover:text-mint transition-colors">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">{item.description}</p>
+                <h3 className="mb-3 text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{item.title}</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">{item.description}</p>
               </div>
             </div>
           ))}

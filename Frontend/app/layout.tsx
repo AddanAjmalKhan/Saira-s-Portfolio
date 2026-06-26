@@ -62,7 +62,7 @@ export default async function RootLayout({
       lang="en"
       className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-[#f6f8fb]" suppressHydrationWarning>
+      <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         <Navbar navItems={navItems} />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer navItems={navItems} profile={profile} />
