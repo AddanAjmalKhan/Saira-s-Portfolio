@@ -1,15 +1,19 @@
 import Container from "@/components/ui/Container";
-import { LinkedInIcon, ResearchGateIcon, MailIcon } from "@/components/ui/icons";
+import SocialIcon from "@/components/ui/SocialIcon";
 
 interface NavItem {
   label: string;
   href: string;
 }
+interface SocialLink {
+  label: string;
+  url: string;
+  icon?: string | null;
+  iconUrl?: string | null;
+}
 interface FooterProfile {
   name: string;
   tagline: string;
-  linkedin: string;
-  researchgate: string;
   email: string;
   location: string;
   phone: string;
@@ -18,9 +22,11 @@ interface FooterProfile {
 export default function Footer({
   navItems,
   profile,
+  socials = [],
 }: {
   navItems: NavItem[];
   profile: FooterProfile | null;
+  socials?: SocialLink[];
 }) {
   if (!profile) return null;
   return (
@@ -34,32 +40,19 @@ export default function Footer({
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
                 {profile.tagline}
               </p>
-              <div className="mt-5 flex items-center gap-3">
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:border-mint hover:bg-mint/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
-                >
-                  <LinkedInIcon width={18} height={18} />
-                </a>
-                <a
-                  href={profile.researchgate}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="ResearchGate"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:border-mint hover:bg-mint/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
-                >
-                  <ResearchGateIcon width={18} height={18} />
-                </a>
-                <a
-                  href={`mailto:${profile.email}`}
-                  aria-label="Email"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:border-mint hover:bg-mint/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
-                >
-                  <MailIcon width={18} height={18} />
-                </a>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:border-mint hover:bg-mint/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/30"
+                  >
+                    <SocialIcon icon={s.icon} iconUrl={s.iconUrl} label={s.label} className="h-[18px] w-[18px]" />
+                  </a>
+                ))}
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-import { getPublications } from "@/lib/content";
+import { getPublications, getPageContent } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
@@ -8,12 +8,13 @@ function doiHref(doi: string): string {
 }
 
 export default async function PublicationsPage() {
-  const publications = await getPublications();
+  const [publications, pages] = await Promise.all([getPublications(), getPageContent()]);
+  const block = pages["publications"];
   return (
     <main className="min-h-screen pt-32 pb-20 sm:pt-40">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <h1 className="mb-12 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          Scientific <span className="text-gradient">Publications</span>
+          {block?.heading ? block.heading : (<>Scientific <span className="text-gradient">Publications</span></>)}
         </h1>
 
         <div className="grid gap-6">

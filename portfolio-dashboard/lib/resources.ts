@@ -9,7 +9,8 @@ export type FieldType =
   | "url"
   | "email"
   | "list" // string[] (add/remove rows)
-  | "image" // Cloudinary upload + URL
+  | "image" // Cloudinary upload + URL (single)
+  | "images" // string[] of image URLs (multiple uploads)
   | "select";
 
 export interface FieldDef {
@@ -96,6 +97,28 @@ export const resources: Record<string, ResourceDef> = {
     ],
   },
 
+  socialLinks: {
+    slug: "socialLinks",
+    model: "socialLink",
+    label: "Social link",
+    labelPlural: "Social links",
+    group: "Identity",
+    fields: [
+      { name: "label", label: "Label", type: "text", required: true, listColumn: true, placeholder: "LinkedIn" },
+      { name: "url", label: "URL", type: "text", required: true, listColumn: true, placeholder: "https://… or mailto:you@example.com" },
+      {
+        name: "icon",
+        label: "Built-in icon",
+        type: "select",
+        options: ["linkedin", "researchgate", "email", "github", "twitter", "orcid", "scholar", "website"],
+        listColumn: true,
+        help: "Used if no custom logo is uploaded. Choose 'website' for a generic link icon.",
+      },
+      { name: "iconUrl", label: "Custom logo (optional)", type: "image", help: "Upload a logo to override the built-in icon." },
+      orderField,
+    ],
+  },
+
   education: {
     slug: "education",
     model: "education",
@@ -107,6 +130,7 @@ export const resources: Record<string, ResourceDef> = {
       { name: "organisation", label: "Institution", type: "text", required: true, listColumn: true },
       { name: "period", label: "Period", type: "text", required: true, listColumn: true, placeholder: "Oct 2023 — Sep 2025" },
       { name: "location", label: "Location", type: "text", required: true },
+      { name: "logoUrl", label: "University logo", type: "image", help: "Upload the institution's logo (shown on the Education page)." },
       { name: "grade", label: "Grade", type: "text", placeholder: "110/110 with Honour" },
       { name: "description", label: "Description", type: "textarea" },
       { name: "highlights", label: "Highlights", type: "list" },
@@ -166,6 +190,7 @@ export const resources: Record<string, ResourceDef> = {
       { name: "country", label: "Country", type: "text", listColumn: true },
       { name: "duration", label: "Year / duration", type: "text" },
       { name: "description", label: "Description", type: "textarea" },
+      { name: "images", label: "Images (up to 3)", type: "images", help: "Optional photos shown with this entry." },
       orderField,
     ],
   },
@@ -238,6 +263,7 @@ export const resources: Record<string, ResourceDef> = {
       { name: "location", label: "Location", type: "text", required: true },
       { name: "period", label: "Period", type: "text", required: true },
       { name: "highlights", label: "Highlights", type: "list" },
+      { name: "images", label: "Images (up to 3)", type: "images", help: "Optional photos shown with this entry." },
       orderField,
     ],
   },
@@ -252,6 +278,7 @@ export const resources: Record<string, ResourceDef> = {
       { name: "title", label: "Title", type: "textarea", required: true, listColumn: true },
       { name: "organiser", label: "Organiser", type: "text", required: true, listColumn: true },
       { name: "date", label: "Date", type: "text", required: true, listColumn: true },
+      { name: "images", label: "Images (up to 3)", type: "images", help: "Optional photos shown with this entry." },
       orderField,
     ],
   },
@@ -299,7 +326,8 @@ export const resources: Record<string, ResourceDef> = {
       { name: "category", label: "Category", type: "text", required: true, listColumn: true, placeholder: "Career / Award / Conference" },
       { name: "date", label: "Date", type: "text", required: true, listColumn: true, placeholder: "March 2026" },
       { name: "description", label: "Description", type: "textarea", required: true },
-      { name: "imageUrl", label: "Image", type: "image" },
+      { name: "imageUrl", label: "Main image", type: "image" },
+      { name: "images", label: "More images (up to 3)", type: "images", help: "Optional extra photos shown with this update." },
       orderField,
     ],
   },
@@ -345,6 +373,20 @@ export const resources: Record<string, ResourceDef> = {
     ],
   },
 
+  projectLogos: {
+    slug: "projectLogos",
+    model: "projectLogo",
+    label: "Project logo",
+    labelPlural: "Project logos",
+    group: "Content pages",
+    fields: [
+      { name: "name", label: "Name", type: "text", required: true, listColumn: true, help: "Used as the logo's alt text." },
+      { name: "logoUrl", label: "Logo", type: "image", required: true },
+      { name: "url", label: "Link (optional)", type: "url" },
+      orderField,
+    ],
+  },
+
   pageContent: {
     slug: "pageContent",
     model: "pageContent",
@@ -352,9 +394,10 @@ export const resources: Record<string, ResourceDef> = {
     labelPlural: "Page text blocks",
     group: "Content pages",
     fields: [
-      { name: "key", label: "Key (page id)", type: "text", required: true, listColumn: true, help: "Identifier used by the site, e.g. research-intro." },
+      { name: "key", label: "Key (page id)", type: "text", required: true, listColumn: true, help: "Identifier used by the site (e.g. education, publications). Don't change existing keys." },
+      { name: "eyebrow", label: "Eyebrow (small label above heading)", type: "text" },
       { name: "heading", label: "Heading", type: "text", listColumn: true },
-      { name: "subheading", label: "Subheading", type: "textarea" },
+      { name: "subheading", label: "Subheading / intro", type: "textarea" },
       { name: "body", label: "Body", type: "textarea" },
     ],
   },
@@ -376,7 +419,7 @@ export function getResource(slug: string): ResourceDef | undefined {
 }
 
 export function isArrayField(f: FieldDef): boolean {
-  return f.type === "list";
+  return f.type === "list" || f.type === "images";
 }
 
 export function isNumberField(f: FieldDef): boolean {

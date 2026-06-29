@@ -1,26 +1,25 @@
 import Container from "@/components/ui/Container";
-import { LinkedInIcon, ResearchGateIcon, MailIcon } from "@/components/ui/icons";
+import SocialIcon from "@/components/ui/SocialIcon";
 import Link from "next/link";
 
 interface HeroProfile {
   name: string;
   summary: string;
-  linkedin: string;
-  researchgate: string;
-  email: string;
   profileImageUrl?: string | null;
 }
 
-export default function Hero({ profile }: { profile: HeroProfile }) {
-  const socials = [
-    { label: "LinkedIn", icon: <LinkedInIcon className="w-4 h-4" />, href: profile.linkedin },
-    { label: "ResearchGate", icon: <ResearchGateIcon className="w-4 h-4" />, href: profile.researchgate },
-    { label: "Email", icon: <MailIcon className="w-4 h-4" />, href: `mailto:${profile.email}` },
-  ];
+interface SocialLink {
+  label: string;
+  url: string;
+  icon?: string | null;
+  iconUrl?: string | null;
+}
+
+export default function Hero({ profile, socials }: { profile: HeroProfile; socials: SocialLink[] }) {
   return (
     <section
       id="top"
-      className="grain relative w-full overflow-hidden text-white min-h-screen lg:h-screen flex items-center pt-16"
+      className="grain relative w-full overflow-hidden text-white flex flex-1 items-center pt-20 pb-8"
     >
       <div className="bg-dot-grid absolute inset-0 opacity-40" aria-hidden />
       {/* Soft vignette */}
@@ -63,13 +62,13 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
                 {socials.map((s) => (
                   <li key={s.label}>
                     <a
-                      href={s.href}
+                      href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-200 transition-all hover:border-cyan-400/40 hover:bg-white/10"
                     >
                       <span className="opacity-70 group-hover:opacity-100 transition-opacity">
-                        {s.icon}
+                        <SocialIcon icon={s.icon} iconUrl={s.iconUrl} label={s.label} className="w-4 h-4" />
                       </span>
                       {s.label}
                     </a>

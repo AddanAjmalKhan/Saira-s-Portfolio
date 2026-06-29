@@ -1,4 +1,5 @@
 import { getNews, getPageContent } from "@/lib/content";
+import ImageRow from "@/components/ui/ImageRow";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,7 @@ export default async function NewsPage() {
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{item.title}</h3>
                 <p className="text-slate-400 leading-relaxed text-sm">{item.description}</p>
+                <ImageRow images={item.images} className="mt-4" />
               </div>
             </div>
           ))}

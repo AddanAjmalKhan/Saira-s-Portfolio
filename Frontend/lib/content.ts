@@ -12,6 +12,14 @@ export async function getNavItems() {
   return prisma.navItem.findMany({ orderBy: { order: "asc" } });
 }
 
+export async function getSocialLinks() {
+  return prisma.socialLink.findMany({ orderBy: { order: "asc" } });
+}
+
+export async function getProjectLogos() {
+  return prisma.projectLogo.findMany({ orderBy: { order: "asc" } });
+}
+
 export async function getQuickFacts() {
   return prisma.quickFact.findMany({ orderBy: { order: "asc" } });
 }
@@ -93,7 +101,11 @@ export async function getMapLocations(): Promise<MapLocation[]> {
 /** Editable page text blocks, returned as a key -> block map for easy lookup. */
 export async function getPageContent() {
   const rows = await prisma.pageContent.findMany();
-  const map: Record<string, { heading: string | null; subheading: string | null; body: string | null }> = {};
-  for (const r of rows) map[r.key] = { heading: r.heading, subheading: r.subheading, body: r.body };
+  const map: Record<
+    string,
+    { eyebrow: string | null; heading: string | null; subheading: string | null; body: string | null }
+  > = {};
+  for (const r of rows)
+    map[r.key] = { eyebrow: r.eyebrow, heading: r.heading, subheading: r.subheading, body: r.body };
   return map;
 }

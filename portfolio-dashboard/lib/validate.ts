@@ -20,7 +20,8 @@ export function coerceAndValidate(
     const value = raw[field.name];
 
     switch (field.type) {
-      case "list": {
+      case "list":
+      case "images": {
         const arr = Array.isArray(value)
           ? value.map((v) => String(v).trim()).filter(Boolean)
           : [];

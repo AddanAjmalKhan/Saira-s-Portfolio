@@ -59,6 +59,25 @@ model Profile {
   updatedAt       DateTime @updatedAt
 }
 
+// Social / external profile links shown on the public site (Hero, footer, contact).
+model SocialLink {
+  id      String  @id @default(cuid())
+  label   String
+  url     String
+  icon    String? // built-in icon name (linkedin, researchgate, email, website, …)
+  iconUrl String? // optional uploaded logo (overrides the built-in icon)
+  order   Int     @default(0)
+}
+
+// Logos shown in the auto-scrolling "Current projects" strip on the home page.
+model ProjectLogo {
+  id      String  @id @default(cuid())
+  name    String
+  logoUrl String
+  url     String?
+  order   Int     @default(0)
+}
+
 model QuickFact {
   id    String @id @default(cuid())
   label String
@@ -83,6 +102,7 @@ model Education {
   degree       String?
   university   String?
   description  String?
+  logoUrl      String?
   highlights   String[]
   tags         String[]
   order        Int      @default(0)
@@ -114,13 +134,14 @@ model Publication {
 }
 
 model Training {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
   country     String?
   institution String?
   duration    String?
   description String?
-  order       Int     @default(0)
+  images      String[]
+  order       Int      @default(0)
 }
 
 model SkillGroup {
@@ -162,15 +183,17 @@ model SummerSchool {
   host       String
   location   String
   highlights String[]
+  images     String[]
   order      Int      @default(0)
 }
 
 model Conference {
-  id        String @id @default(cuid())
+  id        String   @id @default(cuid())
   date      String
   title     String
   organiser String
-  order     Int    @default(0)
+  images    String[]
+  order     Int      @default(0)
 }
 
 model Membership {
@@ -194,13 +217,14 @@ model MapLocation {
 }
 
 model NewsItem {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   date        String
   title       String
   category    String
   description String
   imageUrl    String?
-  order       Int     @default(0)
+  images      String[]
+  order       Int      @default(0)
 }
 
 model GalleryImage {
@@ -230,6 +254,7 @@ model Collaboration {
 model PageContent {
   id         String  @id @default(cuid())
   key        String  @unique
+  eyebrow    String?
   heading    String?
   subheading String?
   body       String?

@@ -1,10 +1,20 @@
 import Hero from "@/components/sections/Hero";
-import { getProfile } from "@/lib/content";
+import CurrentProjects from "@/components/sections/CurrentProjects";
+import { getProfile, getSocialLinks, getProjectLogos } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const profile = await getProfile();
+  const [profile, socials, projects] = await Promise.all([
+    getProfile(),
+    getSocialLinks(),
+    getProjectLogos(),
+  ]);
   if (!profile) return null;
-  return <Hero profile={profile} />;
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Hero profile={profile} socials={socials} />
+      <CurrentProjects items={projects} />
+    </div>
+  );
 }

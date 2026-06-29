@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import type { FieldDef } from "@/lib/resources";
 import ListField from "@/components/ListField";
 import ImageField from "@/components/ImageField";
+import MultiImageField from "@/components/MultiImageField";
 
 interface Props {
   slug: string;
@@ -17,7 +18,7 @@ interface Props {
 }
 
 function defaultFor(field: FieldDef): unknown {
-  if (field.type === "list") return [];
+  if (field.type === "list" || field.type === "images") return [];
   if (field.type === "number") return "";
   return "";
 }
@@ -37,7 +38,7 @@ export default function ResourceForm({
     const v: Record<string, unknown> = {};
     for (const f of fields) {
       const init = initial?.[f.name];
-      if (f.type === "list") v[f.name] = Array.isArray(init) ? init : [];
+      if (f.type === "list" || f.type === "images") v[f.name] = Array.isArray(init) ? init : [];
       else v[f.name] = init === null || init === undefined ? defaultFor(f) : init;
     }
     return v;
@@ -120,6 +121,11 @@ export default function ResourceForm({
             <ImageField
               value={String(values[f.name] ?? "")}
               onChange={(url) => set(f.name, url)}
+            />
+          ) : f.type === "images" ? (
+            <MultiImageField
+              value={(values[f.name] as string[]) ?? []}
+              onChange={(next) => set(f.name, next)}
             />
           ) : f.type === "select" ? (
             <select

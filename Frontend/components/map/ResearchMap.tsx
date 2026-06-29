@@ -47,8 +47,8 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
               <stop offset="0%" stopColor="#22d3ee" />
               <stop offset="100%" stopColor="#0e7490" />
             </radialGradient>
-            <filter id="rm-glow" x="-60%" y="-60%" width="220%" height="220%">
-              <feDropShadow dx="0" dy="0" stdDeviation="2.4" floodColor="#0891b2" floodOpacity="0.6" />
+            <filter id="rm-glow" x="-80%" y="-80%" width="260%" height="260%">
+              <feDropShadow dx="0" dy="0" stdDeviation="3.5" floodColor="#22d3ee" floodOpacity="0.9" />
             </filter>
           </defs>
           <g>
@@ -80,25 +80,26 @@ export default function ResearchMap({ geometry, activeId: externalActiveId, onAc
                   onBlur={() => setActiveId(null)}
                 >
                   {/* Generous transparent hit-area */}
-                  <circle r={12} fill="transparent" />
-                  {isActive && (
-                    <circle
-                      r={6}
-                      fill="none"
-                      stroke="#0891b2"
-                      strokeWidth={1.5}
-                      className="animate-pulse-ring"
-                      style={{ transformOrigin: "center" }}
-                    />
-                  )}
+                  <circle r={14} fill="transparent" />
+                  {/* Animated pulse ring */}
                   <circle
-                    r={isActive ? 7 : 5}
-                    fill="url(#rm-dot)"
-                    stroke="#ffffff"
-                    strokeWidth={1.6}
+                    r={isActive ? 11 : 9}
+                    fill="none"
+                    stroke="#22d3ee"
+                    strokeWidth={2}
+                    className="animate-pulse-ring"
+                    style={{ transformOrigin: "center" }}
+                  />
+                  {/* Bright dot with a dark ring so it pops on the light land + dark sea */}
+                  <circle
+                    r={isActive ? 8.5 : 7}
+                    fill="#22d3ee"
+                    stroke="#0b1020"
+                    strokeWidth={2.5}
                     filter="url(#rm-glow)"
                     style={{ transition: "r 0.2s ease" }}
                   />
+                  <circle r={isActive ? 3 : 2.5} fill="#ffffff" style={{ transition: "r 0.2s ease" }} />
                   {isActive && (
                     <text
                       y={-14}

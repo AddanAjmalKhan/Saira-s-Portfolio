@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { getProfile, getNavItems } from "@/lib/content";
+import { getProfile, getNavItems, getSocialLinks } from "@/lib/content";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -56,7 +56,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [profile, navItems] = await Promise.all([getProfile(), getNavItems()]);
+  const [profile, navItems, socials] = await Promise.all([
+    getProfile(),
+    getNavItems(),
+    getSocialLinks(),
+  ]);
   return (
     <html
       lang="en"
@@ -65,7 +69,7 @@ export default async function RootLayout({
       <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         <Navbar navItems={navItems} />
         <main className="flex-1 flex flex-col">{children}</main>
-        <Footer navItems={navItems} profile={profile} />
+        <Footer navItems={navItems} profile={profile} socials={socials} />
       </body>
     </html>
   );
