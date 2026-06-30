@@ -1,5 +1,6 @@
 import Container from "@/components/ui/Container";
 import SocialIcon from "@/components/ui/SocialIcon";
+import BioBackground from "@/components/ui/BioBackground";
 import Link from "next/link";
 
 interface HeroProfile {
@@ -22,6 +23,17 @@ export default function Hero({ profile, socials }: { profile: HeroProfile; socia
       className="grain relative w-full overflow-hidden text-white flex flex-1 items-center pt-20 pb-8"
     >
       <div className="bg-dot-grid absolute inset-0 opacity-40" aria-hidden />
+      {/* Animated bioinformatics / forensics backdrop */}
+      <BioBackground />
+      {/* Readability overlay — darkens left (text) side and edges so content stays crisp */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-[#080c18] via-[#080c18]/70 to-transparent"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-[#080c18] via-transparent to-[#080c18]/60"
+        aria-hidden
+      />
       {/* Soft vignette */}
       <div
         className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_-10%,rgba(8,145,178,0.18),transparent_60%)]"

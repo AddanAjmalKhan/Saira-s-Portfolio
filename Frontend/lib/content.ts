@@ -24,6 +24,19 @@ export async function getProjects() {
   return prisma.project.findMany({ orderBy: { order: "asc" } });
 }
 
+/** Visitor counts by country (highest first), for the home-page "viewed from" strip. */
+export async function getCountryVisits() {
+  return prisma.countryVisit.findMany({
+    where: { count: { gt: 0 } },
+    orderBy: { count: "desc" },
+  });
+}
+
+/** Settings (heading + on/off) for the home-page visitor widget. */
+export async function getVisitorWidget() {
+  return prisma.visitorWidget.findUnique({ where: { id: "visitor" } });
+}
+
 export async function getQuickFacts() {
   return prisma.quickFact.findMany({ orderBy: { order: "asc" } });
 }

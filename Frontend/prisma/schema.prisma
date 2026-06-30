@@ -78,6 +78,21 @@ model ProjectLogo {
   order   Int     @default(0)
 }
 
+// Aggregated visitor counts by country (collected automatically on the live site).
+model CountryVisit {
+  id        String   @id @default(cuid())
+  country   String   @unique // ISO 3166-1 alpha-2 code
+  count     Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+// Settings for the "viewed from" widget on the home page (singleton).
+model VisitorWidget {
+  id      String @id @default("visitor")
+  enabled String @default("on") // "on" | "off"
+  heading String @default("Viewed from around the world")
+}
+
 // Full projects shown on the /projects page.
 model Project {
   id          String   @id @default(cuid())
@@ -180,11 +195,13 @@ model Reference {
 }
 
 model Honour {
-  id     String @id @default(cuid())
-  title  String
-  detail String
-  year   String
-  order  Int    @default(0)
+  id       String   @id @default(cuid())
+  title    String
+  detail   String
+  year     String
+  imageUrl String?
+  images   String[]
+  order    Int      @default(0)
 }
 
 model SummerSchool {

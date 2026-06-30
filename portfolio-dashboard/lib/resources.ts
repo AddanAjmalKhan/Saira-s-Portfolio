@@ -247,6 +247,8 @@ export const resources: Record<string, ResourceDef> = {
       { name: "title", label: "Title", type: "text", required: true, listColumn: true },
       { name: "detail", label: "Detail", type: "textarea", required: true },
       { name: "year", label: "Year", type: "text", required: true, listColumn: true },
+      { name: "imageUrl", label: "Logo / main image", type: "image" },
+      { name: "images", label: "More images (up to 3)", type: "images", help: "Optional extra photos shown with this award." },
       orderField,
     ],
   },
@@ -400,6 +402,39 @@ export const resources: Record<string, ResourceDef> = {
       { name: "url", label: "Link (optional)", type: "url" },
       { name: "images", label: "Pictures", type: "images", help: "Project photos / screenshots (shown in a gallery)." },
       orderField,
+    ],
+  },
+
+  visitorWidget: {
+    slug: "visitorWidget",
+    model: "visitorWidget",
+    label: "Visitors widget",
+    labelPlural: "Visitors widget",
+    group: "Content pages",
+    singleton: true,
+    singletonId: "visitor",
+    fields: [
+      { name: "heading", label: "Section heading", type: "text", required: true },
+      {
+        name: "enabled",
+        label: "Show on home page",
+        type: "select",
+        options: ["on", "off"],
+        required: true,
+        help: "Shows the 'viewed from around the world' strip above the footer on the home page.",
+      },
+    ],
+  },
+
+  countryVisits: {
+    slug: "countryVisits",
+    model: "countryVisit",
+    label: "Visitor stat",
+    labelPlural: "Visitor stats (by country)",
+    group: "Content pages",
+    fields: [
+      { name: "country", label: "Country code", type: "text", required: true, listColumn: true, help: "ISO 2-letter code, e.g. AU, IT, PK." },
+      { name: "count", label: "Visitors", type: "number", required: true, listColumn: true },
     ],
   },
 
