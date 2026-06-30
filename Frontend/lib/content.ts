@@ -20,6 +20,10 @@ export async function getProjectLogos() {
   return prisma.projectLogo.findMany({ orderBy: { order: "asc" } });
 }
 
+export async function getProjects() {
+  return prisma.project.findMany({ orderBy: { order: "asc" } });
+}
+
 export async function getQuickFacts() {
   return prisma.quickFact.findMany({ orderBy: { order: "asc" } });
 }

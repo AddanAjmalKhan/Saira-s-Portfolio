@@ -78,6 +78,17 @@ model ProjectLogo {
   order   Int     @default(0)
 }
 
+// Full projects shown on the /projects page.
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  logoUrl     String?
+  url         String?
+  images      String[]
+  order       Int      @default(0)
+}
+
 model QuickFact {
   id    String @id @default(cuid())
   label String
