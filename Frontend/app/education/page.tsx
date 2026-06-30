@@ -12,8 +12,8 @@ export default async function EducationPage() {
     getPageContent(),
   ]);
   const block = pages["education"];
-  // Only show the four degree-study locations on the education map.
-  const EDU_SLUGS = ["san-juan", "viterbo", "godollo", "sialkot"];
+  // Only show the degree-study locations on the education map.
+  const EDU_SLUGS = ["san-juan", "viterbo", "godollo", "sialkot", "islamabad"];
   const eduLocations = locations.filter((l) => EDU_SLUGS.includes(l.id));
   const geometry = buildWorldMap(eduLocations);
 
